@@ -36,7 +36,7 @@ if ((!defined('XOOPS_ROOT_PATH')) || !($GLOBALS['xoopsUser'] instanceof \XoopsUs
  *
  * @return bool true if successfully ready to update module, false if not
  */
-function xoops_module_pre_update_xsitemap(\XoopsModule $module)
+function xoops_module_pre_update_xsitemap(\XoopsModule $module): bool
 {
     $moduleDirName = \basename(\dirname(__DIR__));
     $utility       = new Utility();
@@ -53,7 +53,7 @@ function xoops_module_pre_update_xsitemap(\XoopsModule $module)
  * @return bool true if successfully updated module, false if not
  * @internal param int $curr_version version number of module currently installed
  */
-function xoops_module_update_xsitemap(\XoopsModule $module, $previousVersion = null)
+function xoops_module_update_xsitemap(\XoopsModule $module, $previousVersion = null): bool
 {
     /*======================================================================
         //----------------------------------------------------------------

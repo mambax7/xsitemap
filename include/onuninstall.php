@@ -31,7 +31,7 @@ if ((!defined('XOOPS_ROOT_PATH'))
  *
  * @return bool true if successfully executed, false if not
  */
-function xoops_module_pre_uninstall_xsitemap(\XoopsModule $module)
+function xoops_module_pre_uninstall_xsitemap(\XoopsModule $module): bool
 {
     return true;
 }
@@ -43,7 +43,7 @@ function xoops_module_pre_uninstall_xsitemap(\XoopsModule $module)
  *
  * @return bool true if successfully executed uninstall of module, false if not
  */
-function xoops_module_uninstall_xsitemap(\XoopsModule $module)
+function xoops_module_uninstall_xsitemap(\XoopsModule $module): bool
 {
     //    return true;
     $moduleDirName = $module->getVar('dirname');
