@@ -1,3 +1,7 @@
+<h5>1.57 Beta 1 [NOT RELEASED]</h5>   Dev: XOOPS 2.5.11, PHP 7.4.22, PHP 8.1.0 Beta 2
+<hr>
+- starting PHP 8.1.0 testing (mamba)
+
 <h5>1.56 Final [2021-08-06]</h5>   Dev: XOOPS 2.5.11, PHP 7.4.22, PHP 8.0.8
 <hr>
 - PHP8, cosmetics (mamba)
