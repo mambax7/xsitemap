@@ -65,7 +65,7 @@ function xoops_module_uninstall_xsitemap(\XoopsModule $module): bool
         $dirInfo = new \SplFileInfo($old_dir);
         if ($dirInfo->isDir()) {
             // The directory exists so delete it
-            if (false === $utility::rrmdir($old_dir)) {
+            if (!$utility::rrmdir($old_dir)) {
                 $module->setErrors(sprintf(_AM_XSITEMAP_ERROR_BAD_DEL_PATH, $old_dir));
                 $success = false;
             }
@@ -77,7 +77,7 @@ function xoops_module_uninstall_xsitemap(\XoopsModule $module): bool
     //------------------------------------------------------------------
     $xmlfile = $GLOBALS['xoops']->path('xsitemap.xml');
     if (is_file($xmlfile)) {
-        if (false === ($delOk = unlink($xmlfile))) {
+        if (!$delOk = unlink($xmlfile)) {
             $module->setErrors(sprintf(_AM_XSITEMAP_ERROR_BAD_REMOVE, $xmlfile));
         }
     }

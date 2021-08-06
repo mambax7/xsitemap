@@ -72,7 +72,7 @@ class Plugin extends \XoopsObject
      */
     public function getForm(bool $action): \XoopsThemeForm
     {
-        if (false === $action) {
+        if (!$action) {
             $action = $_SERVER['REQUEST_URI'];
         }
         if ($this->isNew()) {

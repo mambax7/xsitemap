@@ -150,7 +150,7 @@ function xoops_module_update_xsitemap(\XoopsModule $module, int $previousVersion
             $dirInfo = new \SplFileInfo($old_dir);
             if ($dirInfo->isDir()) {
                 // The directory exists so delete it
-                if (false === $utility::rrmdir($old_dir)) {
+                if (!$utility::rrmdir($old_dir)) {
                     $module->setErrors(sprintf(_AM_XSITEMAP_ERROR_BAD_DEL_PATH, $old_dir));
                     return false;
                 }
@@ -167,7 +167,7 @@ function xoops_module_update_xsitemap(\XoopsModule $module, int $previousVersion
         $iterator   = new RegexIterator($unfiltered, '/.*\.html/');
         foreach ($iterator as $name => $fObj) {
             if ($fObj->isFile() && ('index.html' !== $fObj->getFilename())) {
-                if (false === ($success = unlink($fObj->getPathname()))) {
+                if (!$success = unlink($fObj->getPathname())) {
                     $module->setErrors(sprintf(_AM_XSITEMAP_ERROR_BAD_REMOVE, $fObj->getPathname()));
                     return false;
                 }
@@ -183,7 +183,7 @@ function xoops_module_update_xsitemap(\XoopsModule $module, int $previousVersion
         ];
         foreach ($oldFiles as $file) {
             if (is_file($file)) {
-                if (false === ($delOk = unlink($file))) {
+                if (!$delOk = unlink($file)) {
                     $module->setErrors(sprintf(_AM_XSITEMAP_ERROR_BAD_REMOVE, $file));
                 }
                 $success = $success && $delOk;
@@ -232,7 +232,7 @@ function xoops_module_uninstall_xsitemap(\XoopsModule $module): bool
         $dirInfo = new \SplFileInfo($old_dir);
         if ($dirInfo->isDir()) {
             // The directory exists so delete it
-            if (false === $utility::rrmdir($old_dir)) {
+            if (!$utility::rrmdir($old_dir)) {
                 $module->setErrors(sprintf(_AM_XSITEMAP_ERROR_BAD_DEL_PATH, $old_dir));
                 $success = false;
             }
@@ -244,7 +244,7 @@ function xoops_module_uninstall_xsitemap(\XoopsModule $module): bool
     //------------------------------------------------------------------
     $xmlfile = $GLOBALS['xoops']->path('xsitemap.xml');
     if (is_file($xmlfile)) {
-        if (false === ($delOk = unlink($xmlfile))) {
+        if (!$delOk = unlink($xmlfile)) {
             $module->setErrors(sprintf(_AM_XSITEMAP_ERROR_BAD_REMOVE, $xmlfile));
         }
     }
