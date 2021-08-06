@@ -54,7 +54,7 @@ class XsitemapCorePreload extends \XoopsPreloadItem
                 //Create the xsitemap.xml file in the site root
                 $utility       = new Utility();
                 $xsitemap_show = $utility::generateSitemap();
-                $retVal        = $utility::saveSitemap($xsitemap_show) ? true : false;
+                $retVal        = (bool)$utility::saveSitemap($xsitemap_show);
             }
             $_SESSION[$sessionVar] = 1;
         }
