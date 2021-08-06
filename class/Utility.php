@@ -74,7 +74,7 @@ class Utility extends Common\SysUtility
             $criteria->add(new \Criteria('isactive', 1));
             $criteria->add(new \Criteria('name', $hiddenDir));
             $modObj = $moduleHandler->getByDirname($hiddenDir);
-            if (false !== $modObj && $modObj instanceof \XoopsModule) {
+            if ($modObj instanceof \XoopsModule) {
                 $invisibleMidArray[] = $modObj->mid();
             }
         }
