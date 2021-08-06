@@ -26,7 +26,7 @@ class Helper extends \Xmf\Module\Helper
      *
      * @return \XoopsModules\Xsitemap\Helper
      */
-    public static function getInstance(bool $debug): Helper
+    public static function getInstance(bool $debug = false): Helper
     {
         static $instance;
         if (null === $instance) {
