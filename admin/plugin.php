@@ -156,17 +156,17 @@ switch ($op) {
         $plugin_status = Request::getInt('plugin_status', 10);
         $GLOBALS['xoopsTpl']->assign('plugin_status', $plugin_status);
         $status_options        = [1 => _AM_XSITEMAP_PLUGIN_STATUS_A, 0 => _AM_XSITEMAP_PLUGIN_STATUS_NA];
-        $plugin_status_options = '<option value="10"' . ($plugin_status == 0 ? ' selected="selected"' : '') . '>' . _ALL . '</option>';
+        $plugin_status_options = '<option value="10"' . (0 == $plugin_status ? ' selected="selected"' : '') . '>' . _ALL . '</option>';
         foreach (array_keys($status_options) as $i) {
             $plugin_status_options .= '<option value="' . $i . '"' . ($plugin_status == $i ? ' selected="selected"' : '') . '>' . $status_options[$i] . '</option>';
         }
         $GLOBALS['xoopsTpl']->assign('plugin_status_options', $plugin_status_options);
         // Criteria
         $criteria = new \CriteriaCompo();
-        if ($title != '') {
+        if ('' != $title) {
             $criteria->add(new Criteria('plugin_name', '%' . $title . '%', 'LIKE'));
         }
-        if ($plugin_status != 10) {
+        if (10 != $plugin_status) {
             $criteria->add(new Criteria('plugin_online', $plugin_status));
         }
         $criteria->setSort('plugin_name');
