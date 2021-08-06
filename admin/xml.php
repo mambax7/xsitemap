@@ -85,7 +85,6 @@ if (file_exists($xmlfile)) {
          . _AM_XSITEMAP_MANAGER_UPDATE
          . "'>\n"
          . "</form>\n";
-    $GLOBALS['xoopsTpl']->assign('form', $form);
 } else {
     $form = _AM_XSITEMAP_CREATE . "\n"
          . "<form action='xml.php' method='post'>\n"
@@ -97,7 +96,7 @@ if (file_exists($xmlfile)) {
          . "'>\n"
          . "</form>\n"
          . "<br>\n";
-    $GLOBALS['xoopsTpl']->assign('form', $form);
 }
+$GLOBALS['xoopsTpl']->assign('form', $form);
 
 require_once __DIR__ . '/admin_footer.php';
