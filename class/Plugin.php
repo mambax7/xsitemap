@@ -68,7 +68,7 @@ class Plugin extends \XoopsObject
      * @param bool $action
      * @return \XoopsThemeForm
      */
-    public function getForm($action = false)
+    public function getForm($action = false): \XoopsThemeForm
     {
         if (false === $action) {
             $action = $_SERVER['REQUEST_URI'];
@@ -118,7 +118,7 @@ class Plugin extends \XoopsObject
      * @param null|int $maxDepth
      * @return array
      */
-    public function getValuesPlugins($keys = null, $format = null, $maxDepth = null)
+    public function getValuesPlugins($keys = null, $format = null, $maxDepth = null): array
     {
         $ret = $this->getValues($keys, $format, $maxDepth);
         $ret['date_created'] = \formatTimestamp($this->getVar('plugin_date_created'), 'm');

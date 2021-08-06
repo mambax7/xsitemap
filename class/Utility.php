@@ -51,7 +51,7 @@ class Utility extends Common\SysUtility
      *
      * @return array
      */
-    public static function generateSitemap()
+    public static function generateSitemap(): array
     {
         $block         = [];
         $moduleDirName = \basename(\dirname(__DIR__));
@@ -140,7 +140,7 @@ class Utility extends Common\SysUtility
      * @param string $where
      * @return array sitemap links
      */
-    public static function getSitemap($table, $id_name, $pid_name, $title_name, $url, $order = '', $where = '')
+    public static function getSitemap($table, $id_name, $pid_name, $title_name, $url, $order = '', $where = ''): array
     {
         require_once XOOPS_ROOT_PATH . '/class/tree.php';
         $helper = Helper::getInstance();

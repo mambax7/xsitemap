@@ -42,7 +42,7 @@ class XsitemapCorePreload extends \XoopsPreloadItem
      * @param $args
      * @return bool
      */
-    public static function eventCoreIndexStart($args)
+    public static function eventCoreIndexStart($args): bool
     {
         require_once __DIR__ . '/autoloader.php';
         // check once per user session if xsitemap exists
@@ -65,7 +65,7 @@ class XsitemapCorePreload extends \XoopsPreloadItem
      * run autoloader
      * @param $args
      */
-    public static function eventCoreIncludeCommonEnd($args)
+    public static function eventCoreIncludeCommonEnd($args): void
     {
         require_once __DIR__ . '/autoloader.php';
     }
