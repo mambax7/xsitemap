@@ -208,7 +208,7 @@ class Utility extends Common\SysUtility
      * Save the XML Sitemap
      *
      * @param array $xsitemap_show
-     * @return mixed int number of bytes saved | false on failure
+     * @return false|int int number of bytes saved | false on failure
      */
     public static function saveSitemap(array $xsitemap_show)
     {

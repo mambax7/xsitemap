@@ -199,7 +199,7 @@ class SysUtility
      * @param int          $id_field
      * @param int          $id
      *
-     * @return mixed
+     * @return false|void
      */
     public static function cloneRecord($tableName, $id_field, $id)
     {
@@ -249,6 +249,11 @@ class SysUtility
         return $GLOBALS['xoopsDB']->getRowsNum($result) > 0;
     }
 
+    /**
+     * @param $field
+     * @param $table
+     * @return mixed
+     */
     public static function addField($field, $table)
     {
         global $xoopsDB;
