@@ -60,7 +60,7 @@ class SysUtility
      *
      * @return string Trimmed string.
      */
-    public static function truncateHtml(string $text, int $length = 100, string $ending = '...', bool $exact, bool $considerHtml = true): string
+    public static function truncateHtml(string $text, int $length = 100, string $ending = '...', bool $exact = false, bool $considerHtml = true): string
     {
         if ($considerHtml) {
             // if the plain text is shorter than the maximum length, return the whole text
