@@ -140,7 +140,7 @@ class Utility extends Common\SysUtility
      * @param string $where
      * @return array sitemap links
      */
-    public static function getSitemap($table, $id_name, $pid_name, $title_name, $url, $order = '', $where = ''): array
+    public static function getSitemap($table, $id_name, $pid_name, $title_name, $url, string $order = '', string $where = ''): array
     {
         require_once XOOPS_ROOT_PATH . '/class/tree.php';
         $helper = Helper::getInstance();

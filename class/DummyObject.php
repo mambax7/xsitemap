@@ -35,7 +35,7 @@ class DummyObject extends \XoopsObject
      * @param string $pid_name
      * @param string $title_name
      */
-    public function __construct($row, $id_name = 'cid', $pid_name = 'pid', $title_name = 'title')
+    public function __construct($row, string $id_name = 'cid', string $pid_name = 'pid', string $title_name = 'title')
     {
         parent::__construct();
         $this->initVar($id_name, \XOBJ_DTYPE_INT, $row[$id_name]);
