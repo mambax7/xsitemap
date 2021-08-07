@@ -133,11 +133,11 @@ class Utility extends Common\SysUtility
     /**
      * Get the Sitemap
      *
-     * @param        $table
-     * @param        $id_name
-     * @param        $pid_name
-     * @param        $title_name
-     * @param        $url
+     * @param string $table
+     * @param string $id_name
+     * @param string $pid_name
+     * @param string $title_name
+     * @param string $url
      * @param string $order
      * @param string $where
      * @return array sitemap links
