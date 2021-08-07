@@ -25,9 +25,6 @@ namespace XoopsModules\Xsitemap\Common;
  * @author       Mamba <mambax7@gmail.com>
  */
 
-use MyTextSanitizer;
-use XoopsFormDhtmlTextArea;
-use XoopsFormTextArea;
 use XoopsModules\Xsitemap\Helper;
 
 /** @var Helper $helper */

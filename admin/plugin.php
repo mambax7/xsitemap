@@ -30,8 +30,7 @@ declare(strict_types=1);
 use Xmf\Module\Admin;
 use Xmf\Request;
 use XoopsModules\Xsitemap\{Helper,
-    Plugin,
-    PluginHandler
+    Plugin
 };
 
 /** @var Helper $helper */
@@ -104,7 +103,7 @@ switch ($op) {
         }
         break;
     case 'delete_plugin':
-        $pluginsObj = $pluginHandler->get(Request::getInt('plugin_id', 0));
+        $pluginsObj = $pluginHandler->get(Request::getInt('plugin_id'));
         $ok         = Request::getInt('ok', 0, 'POST');
         if (1 == $ok) {
             //        if (\Xmf\Request::hasVar('ok', 'REQUEST[')) && $_REQUEST["ok"] == 1) {
@@ -120,7 +119,7 @@ switch ($op) {
             xoops_confirm(
                 [
                     'ok'        => 1,
-                    'plugin_id' => Request::getInt('plugin_id', 0),
+                    'plugin_id' => Request::getInt('plugin_id'),
                     'op'        => 'delete_plugin',
                 ],
                 $_SERVER['REQUEST_URI'],
@@ -129,7 +128,7 @@ switch ($op) {
         }
         break;
     case 'update_online_plugin':
-        $plugin_id = Request::getInt('plugin_id', 0);
+        $plugin_id = Request::getInt('plugin_id');
         if ($plugin_id > 0) {
             $pluginsObj = $pluginHandler->get($plugin_id);
             $old = $pluginsObj->getVar('plugin_online');
@@ -148,11 +147,11 @@ switch ($op) {
 
         $adminObject->addItemButton(_AM_XSITEMAP_CREATE_PLUGIN, basename(__FILE__) . '?op=add_plugin', 'add');
         $adminObject->displayButton('left', '');
-        $start = Request::getInt('start', 0);
+        $start = Request::getInt('start');
         $limit = $helper->getConfig('adminpager');
 
         //title
-        $title = Request::getString('title', '');
+        $title = Request::getString('title');
         $GLOBALS['xoopsTpl']->assign('title', $title);
         // Status
         $plugin_status = Request::getInt('plugin_status', 10);
@@ -190,7 +189,7 @@ switch ($op) {
             if ($pluginsCount > $limit) {
                 require_once XOOPS_ROOT_PATH . '/class/pagenav.php';
                 $pagenav = new \XoopsPageNav($pluginsCount, $limit, $start, 'start', 'plugin_status=' . $plugin_status . '&title=' . $title);
-                $GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav(4));
+                $GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav());
             }
         }
         break;

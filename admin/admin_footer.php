@@ -20,8 +20,6 @@ declare(strict_types=1);
  * @link       https://xoops.org XOOPS
  **/
 
-use Xmf\Module\Admin;
-
 if (isset($templateMain)) {
     $GLOBALS['xoopsTpl']->display("db:{$templateMain}");
 }

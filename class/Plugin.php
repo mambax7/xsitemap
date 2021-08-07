@@ -63,7 +63,7 @@ class Plugin extends \XoopsObject
      */
     public function __toString()
     {
-        return $this->getVar('plugin_name', 's');
+        return $this->getVar('plugin_name');
     }
 
     /**
