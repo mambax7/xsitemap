@@ -24,7 +24,7 @@ trait VersionChecks
     /**
      * Verifies XOOPS version meets minimum requirements for this module
      * @static
-     * @param \XoopsModule|null $module
+     * @param \XoopsModule|bool|null $module
      *
      * @param string|null       $requiredVer
      * @return bool true if meets requirements, false if not
@@ -53,7 +53,7 @@ trait VersionChecks
     /**
      * Verifies PHP version meets minimum requirements for this module
      * @static
-     * @param \XoopsModule|null $module
+     * @param \XoopsModule|bool|null $module
      *
      * @return bool true if meets requirements, false if not
      */

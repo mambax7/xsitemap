@@ -90,13 +90,13 @@ switch ($op) {
         }
         //require("../include/forms.php");
         $GLOBALS['xoopsTpl']->assign('error', $pluginsObj->getHtmlErrors());
-        $form = $pluginsObj->getForm();
+        $form = $pluginsObj->getForm(false);
         $GLOBALS['xoopsTpl']->assign('form', $form->render());
         break;
     case 'edit_plugin':
         $pluginsObj = $pluginHandler->get(Request::getInt('plugin_id'));
         if ($pluginsObj instanceof Plugin) {
-            $form = $pluginsObj->getForm();
+            $form = $pluginsObj->getForm(false);
             $GLOBALS['xoopsTpl']->assign('form', $form->render());
         } else {
             $GLOBALS['xoopsTpl']->assign('error', \_AM_XSITEMAP_ERROR_NO_PLUGIN);

@@ -151,7 +151,7 @@ class Utility extends Common\SysUtility
         $sql       = "SELECT `{$id_name}`, `{$pid_name}`, `{$title_name}` FROM " . $xoopsDb->prefix . "_{$table}";
         $result    = $xoopsDb->query($sql);
         $objsArray = [];
-        if ($result) {
+        if ($result && $xoopsDb->getRowsNum($result) > 0) {
             while (false !== ($row = $xoopsDb->fetchArray($result))) {
                 $objsArray[] = new DummyObject($row, $id_name, $pid_name, $title_name);
             }
