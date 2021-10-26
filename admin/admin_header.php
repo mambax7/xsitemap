@@ -27,6 +27,7 @@ use Xmf\Module\Admin;
 use XoopsModules\Xsitemap\{
     Helper
 };
+
 /** @var Helper $helper */
 /** @var Admin $adminObject */
 
@@ -35,9 +36,9 @@ require \dirname(__DIR__, 3) . '/include/cp_header.php';
 require_once \dirname(__DIR__) . '/include/common.php';
 $moduleDirName = \basename(\dirname(__DIR__));
 $helper        = Helper::getInstance();
-$adminObject = Admin::getInstance();
-//$pathIcon16    = \Xmf\Module\Admin::iconUrl('', 16);
-//$pathIcon32    = \Xmf\Module\Admin::iconUrl('', 32);
+$adminObject   = Admin::getInstance();
+//$pathIcon16    = \Xmf\Module\Admin::iconUrl('', '16');
+//$pathIcon32    = \Xmf\Module\Admin::iconUrl('', '32');
 //$pathModIcon32 = $helper->getModule()->getInfo('modicons32');
 //if functions.php file exist
 //require_once  \dirname(__DIR__) . '/include/functions.php';

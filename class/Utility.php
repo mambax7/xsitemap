@@ -142,12 +142,12 @@ class Utility extends Common\SysUtility
      * @param string $where
      * @return array sitemap links
      */
-    public static function getSitemap($table, $id_name, $pid_name, $title_name, $url, string $order = '', string $where = ''): array
+    public static function getSitemap(string $table, string $id_name, string $pid_name, string $title_name, string $url, string $order = '', string $where = ''): array
     {
         require_once XOOPS_ROOT_PATH . '/class/tree.php';
         $helper = Helper::getInstance();
         /** @var \XoopsMySQLDatabase $xoopsDb */
-        $xoopsDb       = \XoopsDatabaseFactory::getDatabaseConnection();
+        $xoopsDb   = \XoopsDatabaseFactory::getDatabaseConnection();
         $sql       = "SELECT `{$id_name}`, `{$pid_name}`, `{$title_name}` FROM " . $xoopsDb->prefix . "_{$table}";
         $result    = $xoopsDb->query($sql);
         $objsArray = [];

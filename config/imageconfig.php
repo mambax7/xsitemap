@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 $moduleDirName      = \basename(\dirname(__DIR__));
-$moduleDirNameUpper = mb_strtoupper($moduleDirName);
+$moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 // extra module configs
 $modversion['config'][] = [
     'name'        => 'imageConfigs',

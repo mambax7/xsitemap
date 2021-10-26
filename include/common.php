@@ -53,8 +53,8 @@ if (!defined($moduleDirNameUpper . '_CONSTANTS_DEFINED')) {
 }
 
 $helper->loadLanguage('common');
-$pathIcon16    = Admin::iconUrl('', 16);
-$pathIcon32    = Admin::iconUrl('', 32);
+$pathIcon16    = Admin::iconUrl('', '16');
+$pathIcon32    = Admin::iconUrl('', '32');
 $pathModIcon16 = $helper->getModule()->getInfo('modicons16');
 $pathModIcon32 = $helper->getModule()->getInfo('modicons32');
 $debug         = false;

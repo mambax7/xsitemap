@@ -124,7 +124,7 @@ function xoops_module_update_xsitemap(\XoopsModule $module, int $previousVersion
         return $success;
     ======================================================================*/
     $moduleDirName      = \basename(\dirname(__DIR__));
-    $moduleDirNameUpper = mb_strtoupper($moduleDirName);
+    $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 
     $helper       = Helper::getInstance();
     $utility      = new Utility();
