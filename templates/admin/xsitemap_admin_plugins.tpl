@@ -5,9 +5,9 @@
 	<div align="right">
 		<form id="form_plugin_tri" name="form_plugin_tri" method="post" action="plugin.php">
 			<{$smarty.const._AM_XSITEMAP_PLUGIN_NAME}>
-			<input type="text" id="title" name="title" value="<{$title}>" />
-			<input type="submit" value="<{$smarty.const._GO}>" />
-			<input type='button' name='reset'  id='reset' value='<{$smarty.const._RESET}>' onclick="location='plugin.php'" />
+			<input type="text" id="title" name="title" value="<{$title}>">
+			<input type="submit" value="<{$smarty.const._GO}>">
+			<input type='button' name='reset'  id='reset' value='<{$smarty.const._RESET}>' onclick="location='plugin.php'">
 			<{$smarty.const._AM_XSITEMAP_PLUGIN_ONLINE}>
 			<select name="plugin_filter" id="plugin_filter" onchange="location='plugin.php?title=<{$title}>&plugin_status='+this.options[this.selectedIndex].value">
 				<{$plugin_status_options}>
@@ -38,11 +38,11 @@
 			<tr class="<{cycle values='even,odd'}> alignmiddle">
 				<td class="xo-actions txtcenter">
                     <img id="loading_sml<{$plugin.plugin_id}>" src="../assets/images/spinner.gif" style="display:none;" title="<{$smarty.const._AM_SYSTEM_LOADING}>"
-                    alt="<{$smarty.const._AM_SYSTEM_LOADING}>"/><img class="cursorpointer tooltip" id="sml<{$plugin.plugin_id}>"
+                    alt="<{$smarty.const._AM_SYSTEM_LOADING}>"><img class="cursorpointer tooltip" id="sml<{$plugin.plugin_id}>"
                     onclick="system_setStatus( { op: 'update_online_plugin', plugin_id: <{$plugin.plugin_id}> }, 'sml<{$plugin.plugin_id}>', 'plugin.php' )"
                     src="<{if $plugin.plugin_online == 1}><{xoAdminIcons success.png}><{else}><{xoAdminIcons cancel.png}><{/if}>"
                     alt="<{if $plugin.plugin_online}><{$smarty.const._AM_XSITEMAP_OFF}><{else}><{$smarty.const._AM_XSITEMAP_ON}><{/if}>"
-                    title="<{if $plugin.plugin_online}><{$smarty.const._AM_XSITEMAP_OFF}><{else}><{$smarty.const._AM_XSITEMAP_ON}><{/if}>"/>
+                    title="<{if $plugin.plugin_online}><{$smarty.const._AM_XSITEMAP_OFF}><{else}><{$smarty.const._AM_XSITEMAP_ON}><{/if}>">
                 </td>
 				<td class='center'><{$plugin.plugin_name}></td>
 				<td class='center'><{$plugin.plugin_mod_version}></td>

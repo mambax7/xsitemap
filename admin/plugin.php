@@ -1,10 +1,8 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 /*
  * ****************************************************************************
  * xsitemap - MODULE FOR XOOPS CMS
- * Copyright (c) Urbanspaceman (http://www.takeaweb.it)
+ * Copyright (c) Urbanspaceman (https://www.takeaweb.it)
  *
  * You may not change or alter any portion of this comment or credits
  * of supporting developers from this source code or any supporting source code
@@ -17,25 +15,24 @@ declare(strict_types=1);
 /**
  * Module: xsitemap
  *
- * @package         module\Xsitemap\admin
- * @author          Urbanspaceman (http://www.takeaweb.it)
- * @copyright       Urbanspaceman (http://www.takeaweb.it)
+ * @author          Urbanspaceman (https://www.takeaweb.it)
+ * @copyright       Urbanspaceman (https://www.takeaweb.it)
  * @author          XOOPS Module Development Team
  * @copyright       XOOPS Project (https://xoops.org)
- * @license         http://www.fsf.org/copyleft/gpl.html GNU public license
+ * @license         https://www.fsf.org/copyleft/gpl.html GNU public license
  * @link            https://xoops.org XOOPS
  * @since           1.00
  */
 
 use Xmf\Module\Admin;
 use Xmf\Request;
-use XoopsModules\Xsitemap\{Helper,
+use XoopsModules\Xsitemap\{
+    Helper,
     Plugin
 };
 
 /** @var Helper $helper */
 /** @var Plugin $pluginsObj */
-
 require_once __DIR__ . '/admin_header.php';
 xoops_cp_header();
 $adminObject = Admin::getInstance();
@@ -88,7 +85,7 @@ switch ($op) {
         if ($pluginHandler->insert($pluginsObj)) {
             $helper->redirect('admin/plugin.php?op=show_list_plugin', 2, _AM_XSITEMAP_FORMOK);
         }
-        //require("../include/forms.php");
+        //require "../include/forms.php";
         $GLOBALS['xoopsTpl']->assign('error', $pluginsObj->getHtmlErrors());
         $form = $pluginsObj->getForm(false);
         $GLOBALS['xoopsTpl']->assign('form', $form->render());
@@ -131,7 +128,7 @@ switch ($op) {
         $plugin_id = Request::getInt('plugin_id');
         if ($plugin_id > 0) {
             $pluginsObj = $pluginHandler->get($plugin_id);
-            $old = $pluginsObj->getVar('plugin_online');
+            $old        = $pluginsObj->getVar('plugin_online');
             $pluginsObj->setVar('plugin_online', !$old);
             if ($pluginHandler->insert($pluginsObj)) {
                 exit;

@@ -1,10 +1,8 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 /*
  * ****************************************************************************
  * xsitemap - MODULE FOR XOOPS CMS
- * Copyright (c) Urbanspaceman (http://www.takeaweb.it)
+ * Copyright (c) Urbanspaceman (https://www.takeaweb.it)
  *
  * You may not change or alter any portion of this comment or credits
  * of supporting developers from this source code or any supporting source code
@@ -18,11 +16,10 @@ declare(strict_types=1);
 /**
  * Module: xsitemap
  *
- * @package      module\Xsitemap\language
- * @author       Urbanspaceman (http://www.takeaweb.it)
- * @copyright    Urbanspaceman (http://www.takeaweb.it)
+ * @author       Urbanspaceman (https://www.takeaweb.it)
+ * @copyright    Urbanspaceman (https://www.takeaweb.it)
  * @copyright    XOOPS Project
- * @license      http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @license      https://www.fsf.org/copyleft/gpl.html GNU public license}
  * @since        1.00
  */
 define('_MB_XSITEMAP_PLUGIN_ID', 'Id');

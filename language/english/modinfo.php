@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 /*
  * ****************************************************************************
  * xsitemap - MODULE FOR XOOPS CMS
@@ -17,11 +15,10 @@ declare(strict_types=1);
 /**
  * Module: xsitemap
  *
- * @package    module\Xsitemap\language
- * @author     Urbanspaceman (http://www.takeaweb.it)
- * @copyright  Urbanspaceman (http://www.takeaweb.it)
+ * @author     Urbanspaceman (https://www.takeaweb.it)
+ * @copyright  Urbanspaceman (https://www.takeaweb.it)
  * @copyright  XOOPS Project (https://xoops.org)
- * @license    http://www.fsf.org/copyleft/gpl.html GNU public license
+ * @license    https://www.fsf.org/copyleft/gpl.html GNU public license
  * @since      1.00
  */
 //Menu

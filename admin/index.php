@@ -1,10 +1,8 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 /*
  * ****************************************************************************
  * xsitemap - MODULE FOR XOOPS CMS
- * Copyright (c) Urbanspaceman (http://www.takeaweb.it)
+ * Copyright (c) Urbanspaceman (https://www.takeaweb.it)
  *
  * You may not change or alter any portion of this comment or credits
  * of supporting developers from this source code or any supporting source code
@@ -18,12 +16,11 @@ declare(strict_types=1);
 /**
  * Module: xsitemap
  *
- * @package    module\Xsitemap\admin
  * @author     XOOPS Module Development Team
- * @author     Urbanspaceman (http://www.takeaweb.it)
- * @copyright  Urbanspaceman (http://www.takeaweb.it)
+ * @author     Urbanspaceman (https://www.takeaweb.it)
+ * @copyright  Urbanspaceman (https://www.takeaweb.it)
  * @copyright  XOOPS Project (https://xoops.org)
- * @license    http://www.fsf.org/copyleft/gpl.html GNU public license
+ * @license    https://www.fsf.org/copyleft/gpl.html GNU public license
  * @link       https://xoops.org XOOPS
  * @since      1.00
  *
@@ -41,15 +38,14 @@ use XoopsModules\Xsitemap\{
 /** @var PluginHandler $pluginHandler */
 /** @var Plugin $offlineObj */
 /** @var Utility $utility */
-
 require_once __DIR__ . '/admin_header.php';
 // Display Admin header
 xoops_cp_header();
-$adminObject = Admin::getInstance();
+$adminObject  = Admin::getInstance();
 $templateMain = 'xsitemap_admin_index.tpl';
 // Get online plugin info
 //$countPlugins       = $pluginHandler->getCount();
-$criteria = new \Criteria('plugin_online', 1);
+$criteria           = new \Criteria('plugin_online', 1);
 $pluginHandler      = $helper->getHandler('Plugin');
 $onlinePluginObjs   = [];
 $onlinePluginObjs   = $pluginHandler->getAll($criteria);
@@ -82,7 +78,7 @@ $adminObject->addConfigBoxLine(sprintf(_AM_XSITEMAP_PLUGIN_ONLINE_NAMES, $online
 $adminObject->addConfigBoxLine(sprintf(_AM_XSITEMAP_PLUGIN_OFFLINE_NAMES, $offlinePluginNames), 'information');
 $adminObject->displayNavigation(basename(__FILE__));
 //$adminObject->displayIndex();
-$GLOBALS['xoopsTpl']->assign('index', $adminObject->renderIndex());
+$GLOBALS['xoopsTpl']->assign('index', $adminObject->displayIndex());
 $GLOBALS['xoopsTpl']->assign('serverstats', $utility::getServerStats());
 //echo $utility::getServerStats();
 require_once __DIR__ . '/admin_footer.php';

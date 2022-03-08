@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace XoopsModules\Xsitemap\Common;
 
@@ -16,7 +14,7 @@ namespace XoopsModules\Xsitemap\Common;
 
 /**
  * @copyright   XOOPS Project (https://xoops.org)
- * @license     http://www.fsf.org/copyleft/gpl.html GNU public license
+ * @license     https://www.fsf.org/copyleft/gpl.html GNU public license
  * @author      mamba <mambax7@gmail.com>
  */
 trait VersionChecks
@@ -47,6 +45,7 @@ trait VersionChecks
             $success = false;
             $module->setErrors(\sprintf(\_AM_XSITEMAP_ERROR_BAD_XOOPS, $requiredVer, $currentVer));
         }
+
         return $success;
     }
 
@@ -76,6 +75,7 @@ trait VersionChecks
                 $success = false;
             }
         }
+
         return $success;
     }
 
@@ -107,7 +107,7 @@ trait VersionChecks
                 $curlReturn = \curl_exec($curlHandle);
                 if (false === $curlReturn) {
                     \trigger_error(\curl_error($curlHandle));
-                } elseif (false !== \strpos($curlReturn, 'Not Found')) {
+                } elseif (false !== \mb_strpos($curlReturn, 'Not Found')) {
                     \trigger_error('Repository Not Found: ' . $infoReleasesUrl);
                 } else {
                     $file              = json_decode($curlReturn, false);
@@ -137,6 +137,7 @@ trait VersionChecks
                 \curl_close($curlHandle);
             }
         }
+
         return $ret;
     }
 }

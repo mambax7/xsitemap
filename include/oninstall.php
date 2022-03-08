@@ -1,10 +1,8 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 /**
  * ****************************************************************************
  * xsitemap - MODULE FOR XOOPS CMS
- * Copyright (c) Urbanspaceman (http://www.takeaweb.it)
+ * Copyright (c) Urbanspaceman (https://www.takeaweb.it)
  *
  * You may not change or alter any portion of this comment or credits
  * of supporting developers from this source code or any supporting source code
@@ -13,10 +11,9 @@ declare(strict_types=1);
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * @copyright       Urbanspaceman (http://www.takeaweb.it)
+ * @copyright       Urbanspaceman (https://www.takeaweb.it)
  * @license         GPL
- * @package         xsitemap
- * @author          Urbanspaceman (http://www.takeaweb.it)
+ * @author          Urbanspaceman (https://www.takeaweb.it)
  *
  * Version : 1.00:
  * ****************************************************************************
@@ -26,9 +23,8 @@ declare(strict_types=1);
  * @internal {Make sure you PROTECT THIS FILE}
  */
 
-use XoopsModules\Xsitemap\{
-    Utility
-};
+use XoopsModules\Xsitemap\Utility;
+
 /** @var Utility $utility */
 
 if ((!defined('XOOPS_ROOT_PATH'))
@@ -56,6 +52,7 @@ function xoops_module_pre_install_xsitemap(\XoopsModule $module): bool
             $GLOBALS['xoopsDB']->queryF('DROP TABLE IF EXISTS ' . $GLOBALS['xoopsDB']->prefix($table) . ';');
         }
     }
+
     return $xoopsSuccess && $phpSuccess;
 }
 

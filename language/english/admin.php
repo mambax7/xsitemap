@@ -1,10 +1,8 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 /*
  * ****************************************************************************
  * xsitemap - MODULE FOR XOOPS CMS
- * Copyright (c) Urbanspaceman (http://www.takeaweb.it)
+ * Copyright (c) Urbanspaceman (https://www.takeaweb.it)
  *
  * You may not change or alter any portion of this comment or credits
  * of supporting developers from this source code or any supporting source code
@@ -17,11 +15,10 @@ declare(strict_types=1);
 /**
  * Module: xsitemap
  *
- * @package    module\Xsitemap\language
- * @author     Urbanspaceman (http://www.takeaweb.it)
- * @copyright  Urbanspaceman (http://www.takeaweb.it)
+ * @author     Urbanspaceman (https://www.takeaweb.it)
+ * @copyright  Urbanspaceman (https://www.takeaweb.it)
  * @copyright  XOOPS Project (https://xoops.org)
- * @license    http://www.fsf.org/copyleft/gpl.html GNU public license
+ * @license    https://www.fsf.org/copyleft/gpl.html GNU public license
  * @since      1.00
  */
 //Menu
@@ -83,7 +80,7 @@ define('_AM_XSITEMAP_PERMISSIONS_SUBMIT', 'Permission to send');
 define('_AM_XSITEMAP_ABOUT_RELEASEDATE', 'Release Date');
 define('_AM_XSITEMAP_ABOUT_AUTHOR', 'Author');
 define('_AM_XSITEMAP_ABOUT_CREDITS', 'Credits');
-define('_AM_XSITEMAP_ABOUT_CREDITS_TEXT', "The graphics Xsitemap is based on the stylesheet and the images created by <a href='http://www.astuteo.com'> ASTUTEO </a>");
+define('_AM_XSITEMAP_ABOUT_CREDITS_TEXT', "The graphics Xsitemap is based on the stylesheet and the images created by <a href='https://www.astuteo.com'> ASTUTEO </a>");
 define('_AM_XSITEMAP_ABOUT_TNX', 'Acknowledgments');
 define(
     '_AM_XSITEMAP_ABOUT_TNX_TEXT',
@@ -104,7 +101,7 @@ define('_AM_XSITEMAP_ABOUT_MODULE_INFO', 'About the module');
 define('_AM_XSITEMAP_ABOUT_AUTHOR_INFO', 'About the author');
 define('_AM_XSITEMAP_ABOUT_DISCLAIMER', 'Disclaimer');
 define('_AM_XSITEMAP_ABOUT_DISCLAIMER_TEXT', 'GPL - No warranty');
-define('_AM_XSITEMAP_ABOUT_BY', "Powered by <a href ='http://www.takeaweb.it'> TAKEAWEB </a>");
+define('_AM_XSITEMAP_ABOUT_BY', "Powered by <a href ='https://www.takeaweb.it'> TAKEAWEB </a>");
 //add by urbanspaceman 22/08/2009
 define('_AM_XSITEMAP_ABOUT_TRANSLATION', 'Translation');
 define('_AM_XSITEMAP_ABOUT_TRANSLATION_TEXT', '<ul><li>Italiano : Urbanspaceman</li><li>PortgueseBr : Artsgeral</li><li>English : dbman</li></ul>');

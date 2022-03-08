@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 /*
  You may not change or alter any portion of this comment or credits
  of supporting developers from this source code or any supporting source code
@@ -17,7 +15,7 @@ declare(strict_types=1);
  * @author     Taiwen Jiang <phppp@users.sourceforge.net>
  * @author     ZySpec <zyspec@yahoo.com>
  * @copyright  https://xoops.org 2001-2017 XOOPS Project
- * @license    http://www.fsf.org/copyleft/gpl.html GNU public license
+ * @license    https://www.fsf.org/copyleft/gpl.html GNU public license
  * @link       https://xoops.org XOOPS
  * @since      1.00
  */
@@ -50,6 +48,7 @@ function xoops_module_pre_install_xsitemap(\XoopsModule $module): bool
     $utility       = new Utility();
     $xoopsSuccess  = $utility::checkVerXoops($module);
     $phpSuccess    = $utility::checkVerPhp($module);
+
     return $xoopsSuccess && $phpSuccess;
 }
 
@@ -92,6 +91,7 @@ function xoops_module_pre_update_xsitemap(\XoopsModule $module): bool
     $utility       = new Utility();
     $xoopsSuccess  = $utility::checkVerXoops($module);
     $phpSuccess    = $utility::checkVerPhp($module);
+
     return $xoopsSuccess && $phpSuccess;
 }
 
@@ -126,8 +126,8 @@ function xoops_module_update_xsitemap(\XoopsModule $module, int $previousVersion
     $moduleDirName      = \basename(\dirname(__DIR__));
     $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 
-    $helper       = Helper::getInstance();
-    $utility      = new Utility();
+    $helper  = Helper::getInstance();
+    $utility = new Utility();
 
     //-----------------------------------------------------------------------
     // Upgrade for Xsitemap < 1.54
@@ -152,6 +152,7 @@ function xoops_module_update_xsitemap(\XoopsModule $module, int $previousVersion
                 // The directory exists so delete it
                 if (!$utility::rrmdir($old_dir)) {
                     $module->setErrors(sprintf(_AM_XSITEMAP_ERROR_BAD_DEL_PATH, $old_dir));
+
                     return false;
                 }
             }
@@ -169,6 +170,7 @@ function xoops_module_update_xsitemap(\XoopsModule $module, int $previousVersion
             if ($fObj->isFile() && ('index.html' !== $fObj->getFilename())) {
                 if (!$success = unlink($fObj->getPathname())) {
                     $module->setErrors(sprintf(_AM_XSITEMAP_ERROR_BAD_REMOVE, $fObj->getPathname()));
+
                     return false;
                 }
             }
@@ -190,6 +192,7 @@ function xoops_module_update_xsitemap(\XoopsModule $module, int $previousVersion
             }
         }
     }
+
     return $success;
 }
 
@@ -216,8 +219,8 @@ function xoops_module_uninstall_xsitemap(\XoopsModule $module): bool
 {
     //    return true;
     $moduleDirName = $module->getVar('dirname');
-    $helper  = Helper::getInstance();
-    $utility = new Utility();
+    $helper        = Helper::getInstance();
+    $utility       = new Utility();
     $delOk         = false;
     //    if (!class_exists($utility)) {
     //        xoops_load('utility', $moduleDirName);
@@ -248,5 +251,6 @@ function xoops_module_uninstall_xsitemap(\XoopsModule $module): bool
             $module->setErrors(sprintf(_AM_XSITEMAP_ERROR_BAD_REMOVE, $xmlfile));
         }
     }
+
     return $success && $delOk;
 }

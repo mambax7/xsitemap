@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 /*
  * ****************************************************************************
  * xsitemap - MODULE FOR XOOPS CMS
@@ -16,11 +14,10 @@ declare(strict_types=1);
  */
 
 /**
- * @package    module\Xsitemap\frontside
- * @author     Urbanspaceman (http://www.takeaweb.it)
- * @copyright  Urbanspaceman (http://www.takeaweb.it)
+ * @author     Urbanspaceman (https://www.takeaweb.it)
+ * @copyright  Urbanspaceman (https://www.takeaweb.it)
  * @copyright  XOOPS Project (https://xoops.org)
- * @license    http://www.fsf.org/copyleft/gpl.html GNU public license
+ * @license    https://www.fsf.org/copyleft/gpl.html GNU public license
  * @link       https://xoops.org XOOPS
  */
 require __DIR__ . '/preloads/autoloader.php';
@@ -32,7 +29,7 @@ $modversion    = [
     'name'                => _MI_XSITEMAP_NAME,
     'description'         => _MI_XSITEMAP_DESC,
     'author'              => 'Urbanspaceman',
-    'author_website_url'  => 'http://www.takeaweb.it',
+    'author_website_url'  => 'https://www.takeaweb.it',
     'author_website_name' => 'TAKEAWEB',
     'credits'             => 'astueo.com (CSS Stylesheet), Mage, Mamba, Zyspec, Aerograf',
     'license'             => 'GNU GPL 2.0',
@@ -45,7 +42,7 @@ $modversion    = [
     'dirname'             => $moduleDirName,
     'modicons16'          => 'assets/images/icons/16',
     'modicons32'          => 'assets/images/icons/32',
-    'min_php'             => '7.3',
+    'min_php'             => '7.4',
     'min_xoops'           => '2.5.10',
     'min_admin'           => '1.2',
     'min_db'              => ['mysql' => '5.5'],
@@ -76,7 +73,7 @@ $modversion    = [
         ['name' => _MI_XSITEMAP_DISCLAIMER, 'link' => 'page=disclaimer'],
         ['name' => _MI_XSITEMAP_LICENSE, 'link' => 'page=license'],
         ['name' => _MI_XSITEMAP_SUPPORT, 'link' => 'page=support'],
-    ]
+    ],
 ];
 // ------------------- Templates ------------------- //
 $modversion['templates'] = [

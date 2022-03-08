@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 /*
  * xsitemap module
  *
@@ -13,7 +11,6 @@ declare(strict_types=1);
  */
 
 /**
- * @package    module\Xsitemap\admin
  * @author     Mage, Mamba
  * @copyright  XOOPS Project (https://xoops.org)
  * @license    https://www.gnu.org/licenses/gpl-2.0.html GNU Public License

@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 /*
  * xSiteMap module
  *
@@ -13,7 +11,6 @@ declare(strict_types=1);
  */
 
 /**
- * @package    module\Xsitemap\admin
  * @copyright  https://xoops.org 2001-2017 XOOPS Project
  * @license    https://www.gnu.org/licenses/gpl-2.0.html GNU Public License
  * @author     ZySpec <zyspec@yahoo.com>
@@ -25,14 +22,9 @@ declare(strict_types=1);
  * Xoopspoll Core Preload Class
  *
  * class used to check status of mailing polls that have ended.
- *
- * @package    xoopspoll
- * @subpackage class
  */
 
-use XoopsModules\Xsitemap\{
-    Utility
-};
+use XoopsModules\Xsitemap\Utility;
 
 /**
  * Class XsitemapCorePreload
@@ -60,6 +52,7 @@ class XsitemapCorePreload extends \XoopsPreloadItem
             }
             $_SESSION[$sessionVar] = 1;
         }
+
         return $retVal;
     }
 

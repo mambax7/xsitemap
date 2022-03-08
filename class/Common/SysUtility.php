@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace XoopsModules\Xsitemap\Common;
 
@@ -143,6 +141,7 @@ class SysUtility
                 $truncate .= '</' . $tag . '>';
             }
         }
+
         return $truncate;
     }
 
@@ -185,7 +184,7 @@ class SysUtility
      *
      * @return bool
      */
-    public static function fieldExists($fieldname, $table): bool
+    public static function fieldExists(string $fieldname, string $table): bool
     {
         global $xoopsDB;
         $result = $xoopsDB->queryF("SHOW COLUMNS FROM   $table LIKE '$fieldname'");
@@ -195,26 +194,27 @@ class SysUtility
 
     /**
      * @param array|string $tableName
-     * @param int          $id_field
+     * @param int          $idField
      * @param int          $id
      *
      * @return false|void
      */
-    public static function cloneRecord($tableName, int $id_field, int $id)
+    public static function cloneRecord($tableName, int $idField, int $id)
     {
         $new_id = false;
         $table  = $GLOBALS['xoopsDB']->prefix($tableName);
         // copy content of the record you wish to clone
-        $tempTable = $GLOBALS['xoopsDB']->fetchArray($GLOBALS['xoopsDB']->query("SELECT * FROM $table WHERE $id_field='$id' "), \MYSQLI_ASSOC) or exit('Could not select record');
+        $tempTable = $GLOBALS['xoopsDB']->fetchArray($GLOBALS['xoopsDB']->query("SELECT * FROM $table WHERE $idField='$id' "), \MYSQLI_ASSOC) or exit('Could not select record');
         // set the auto-incremented id's value to blank.
-        unset($tempTable[$id_field]);
+        unset($tempTable[$idField]);
         // insert cloned copy of the original  record
-        $result = $GLOBALS['xoopsDB']->queryF("INSERT INTO $table (" . \implode(', ', \array_keys($tempTable)) . ") VALUES ('" . \implode("', '", $tempTable) . "')") or exit ($GLOBALS['xoopsDB']->error());
+        $result = $GLOBALS['xoopsDB']->queryF("INSERT INTO $table (" . \implode(', ', \array_keys($tempTable)) . ") VALUES ('" . \implode("', '", $tempTable) . "')") or exit($GLOBALS['xoopsDB']->error());
 
         if ($result) {
             // Return the new id
             $new_id = $GLOBALS['xoopsDB']->getInsertId();
         }
+
         return $new_id;
     }
 
@@ -230,7 +230,7 @@ class SysUtility
                 throw new \RuntimeException(\sprintf('Unable to create the %s directory', $folder));
             }
             file_put_contents($folder . '/index.html', '<script>history.go(-1);</script>');
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             echo 'Caught exception: ', $e->getMessage(), "\n", '<br>';
         }
     }

@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 /*
  * You may not change or alter any portion of this comment or credits
  * of supporting developers from this source code or any supporting source code
@@ -13,8 +11,8 @@ declare(strict_types=1);
 
 /**
  * @copyright    XOOPS Project (https://xoops.org)
- * @license      GNU GPL 2 or later (https://www.gnu.org/licenses/gpl-2.0.html)
- * @author      XOOPS Development Team
+ * @license      GNU GPL 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html)
+ * @author       XOOPS Development Team
  */
 
 use XoopsModules\Xsitemap\{
@@ -44,6 +42,7 @@ function xoops_module_pre_update_xsitemap(\XoopsModule $module): bool
     $utility       = new Utility();
     $xoopsSuccess  = $utility::checkVerXoops($module);
     $phpSuccess    = $utility::checkVerPhp($module);
+
     return $xoopsSuccess && $phpSuccess;
 }
 
@@ -102,6 +101,7 @@ function xoops_module_update_xsitemap(\XoopsModule $module, int $previousVersion
                 // The directory exists so delete it
                 if (!$utility::rrmdir($old_dir)) {
                     $module->setErrors(sprintf(_AM_XSITEMAP_ERROR_BAD_DEL_PATH, $old_dir));
+
                     return false;
                 }
             }
@@ -119,6 +119,7 @@ function xoops_module_update_xsitemap(\XoopsModule $module, int $previousVersion
             if ($fObj->isFile() && ('index.html' !== $fObj->getFilename())) {
                 if (!$success = unlink($fObj->getPathname())) {
                     $module->setErrors(sprintf(_AM_XSITEMAP_ERROR_BAD_REMOVE, $fObj->getPathname()));
+
                     return false;
                 }
             }
@@ -142,9 +143,9 @@ function xoops_module_update_xsitemap(\XoopsModule $module, int $previousVersion
     }
     if ($previousVersion < 156) {
         // update table (add new field)
-        $table = $GLOBALS['xoopsDB']->prefix('xsitemap_plugin');
-        $field = 'plugin_where';
-        $check = $GLOBALS['xoopsDB']->queryF('SHOW COLUMNS FROM `' . $table . "` LIKE '" . $field . "'");
+        $table   = $GLOBALS['xoopsDB']->prefix('xsitemap_plugin');
+        $field   = 'plugin_where';
+        $check   = $GLOBALS['xoopsDB']->queryF('SHOW COLUMNS FROM `' . $table . "` LIKE '" . $field . "'");
         $numRows = $GLOBALS['xoopsDB']->getRowsNum($check);
         if (!$numRows) {
             $sql = "ALTER TABLE `$table` ADD `$field` VARCHAR(255) NOT NULL AFTER `plugin_weight`;";

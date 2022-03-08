@@ -1,10 +1,8 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 /*
  * ****************************************************************************
  * xsitemap - MODULE FOR XOOPS CMS
- * Copyright (c) Urbanspaceman (http://www.takeaweb.it)
+ * Copyright (c) Urbanspaceman (https://www.takeaweb.it)
  *
  * You may not change or alter any portion of this comment or credits
  * of supporting developers from this source code or any supporting source code
@@ -18,12 +16,11 @@ declare(strict_types=1);
 /**
  * Module: xsitemap
  *
- * @package         module\Xsitemap\admin
  * @author          XOOPS Module Development Team
- * @author          Urbanspaceman (http://www.takeaweb.it)
- * @copyright       Urbanspaceman (http://www.takeaweb.it)
+ * @author          Urbanspaceman (https://www.takeaweb.it)
+ * @copyright       Urbanspaceman (https://www.takeaweb.it)
  * @copyright       XOOPS Project (https://xoops.org)
- * @license         http://www.fsf.org/copyleft/gpl.html GNU public license
+ * @license         https://www.fsf.org/copyleft/gpl.html GNU public license
  * @link            https://xoops.org XOOPS
  * @since           1.00
  */
@@ -37,7 +34,6 @@ use XoopsModules\Xsitemap\{
 /** @var Admin $adminObject */
 /** @var Helper $helper */
 /** @var Utility $utility */
-
 require_once __DIR__ . '/admin_header.php';
 $templateMain = 'xsitemap_admin_xml.tpl';
 
@@ -73,29 +69,29 @@ if (file_exists($xmlfile)) {
     $GLOBALS['xoopsTpl']->assign('file_lastmod', $last_mod);
     $GLOBALS['xoopsTpl']->assign('file_size', $stat['size']);
     $form = "<form action=xml.php method=post>\n"
-         . "  <input type='hidden' name='XOOPS_TOKEN_REQUEST' value='"
-         . $GLOBALS['xoopsSecurity']->createToken()
-         . "'>\n"
-         . "  <input id='viewbtn' type='button' value='"
-         . _AM_XSITEMAP_XML_VIEW_XML
-         . "' onclick='window.location.href =\""
-         . $GLOBALS['xoops']->url('www/xsitemap.xml')
-         . "\"'>\n"
-         . "  <input style='margin-left: 3em;' type='submit' name='update' value='"
-         . _AM_XSITEMAP_MANAGER_UPDATE
-         . "'>\n"
-         . "</form>\n";
+            . "  <input type='hidden' name='XOOPS_TOKEN_REQUEST' value='"
+            . $GLOBALS['xoopsSecurity']->createToken()
+            . "'>\n"
+            . "  <input id='viewbtn' type='button' value='"
+            . _AM_XSITEMAP_XML_VIEW_XML
+            . "' onclick='window.location.href =\""
+            . $GLOBALS['xoops']->url('www/xsitemap.xml')
+            . "\"'>\n"
+            . "  <input style='margin-left: 3em;' type='submit' name='update' value='"
+            . _AM_XSITEMAP_MANAGER_UPDATE
+            . "'>\n"
+            . "</form>\n";
 } else {
     $form = _AM_XSITEMAP_CREATE . "\n"
-         . "<form action='xml.php' method='post'>\n"
-         . "  <input type='hidden' name='XOOPS_TOKEN_REQUEST' value='"
-         . $GLOBALS['xoopsSecurity']->createToken()
-         . "'>\n"
-         . "  <input type='submit' name='update' value='"
-         . _AM_XSITEMAP_CREATE
-         . "'>\n"
-         . "</form>\n"
-         . "<br>\n";
+            . "<form action='xml.php' method='post'>\n"
+            . "  <input type='hidden' name='XOOPS_TOKEN_REQUEST' value='"
+            . $GLOBALS['xoopsSecurity']->createToken()
+            . "'>\n"
+            . "  <input type='submit' name='update' value='"
+            . _AM_XSITEMAP_CREATE
+            . "'>\n"
+            . "</form>\n"
+            . "<br>\n";
 }
 $GLOBALS['xoopsTpl']->assign('form', $form);
 

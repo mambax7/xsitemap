@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 /*
  * You may not change or alter any portion of this comment or credits
  * of supporting developers from this source code or any supporting source code
@@ -13,8 +11,8 @@ declare(strict_types=1);
 
 /**
  * @copyright    XOOPS Project (https://xoops.org)
- * @license      GNU GPL 2 or later (https://www.gnu.org/licenses/gpl-2.0.html)
- * @author      XOOPS Development Team
+ * @license      GNU GPL 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html)
+ * @author       XOOPS Development Team
  */
 
 use Xmf\Module\Admin;
@@ -27,13 +25,12 @@ use XoopsModules\Xsitemap\{
 /** @var Helper $helper */
 /** @var Utility $utility */
 /** @var PluginHandler $pluginHandler */
-
 require_once \dirname(__DIR__) . '/preloads/autoloader.php';
 $moduleDirName      = \basename(\dirname(__DIR__));
 $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
-$db      = \XoopsDatabaseFactory::getDatabaseConnection();
-$helper  = Helper::getInstance();
-$utility = new Utility();
+$db                 = \XoopsDatabaseFactory::getDatabaseConnection();
+$helper             = Helper::getInstance();
+$utility            = new Utility();
 //$configurator = new Configurator();
 $helper->loadLanguage('common');
 if (!defined($moduleDirNameUpper . '_CONSTANTS_DEFINED')) {
@@ -62,7 +59,7 @@ if (!isset($GLOBALS['xoopsTpl']) || !($GLOBALS['xoopsTpl'] instanceof \XoopsTpl)
     require_once $GLOBALS['xoops']->path('class/template.php');
     $xoopsTpl = new \XoopsTpl();
 }
-$GLOBALS['xoopsTpl']->assign('mod_url', XOOPS_URL . '/modules/' . $moduleDirName);
+$GLOBALS['xoopsTpl']->assign('mod_url', $helper->url());
 // Local icons path
 $GLOBALS['xoopsTpl']->assign('pathModIcon16', XOOPS_URL . '/modules/' . $moduleDirName . '/' . $pathModIcon16);
 $GLOBALS['xoopsTpl']->assign('pathModIcon32', $pathModIcon32);

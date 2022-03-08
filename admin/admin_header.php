@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 /*
  * xsitemap module
  *
@@ -13,9 +11,8 @@ declare(strict_types=1);
  */
 
 /**
- * @package    module\Xsitemap\admin
- * @author     Urbanspaceman (http://www.takeaweb.it)
- * @copyright  Urbanspaceman (http://www.takeaweb.it)
+ * @author     Urbanspaceman (https://www.takeaweb.it)
+ * @copyright  Urbanspaceman (https://www.takeaweb.it)
  * @author     XOOPS Module Dev Team
  * @copyright  XOOPS Project (https://xoops.org)
  * @license    https://www.gnu.org/licenses/gpl-2.0.html GNU Public License
@@ -24,13 +21,10 @@ declare(strict_types=1);
  **/
 
 use Xmf\Module\Admin;
-use XoopsModules\Xsitemap\{
-    Helper
-};
+use XoopsModules\Xsitemap\Helper;
 
 /** @var Helper $helper */
 /** @var Admin $adminObject */
-
 $moduleDirName = \basename(\dirname(__DIR__));
 require \dirname(__DIR__, 3) . '/include/cp_header.php';
 require_once \dirname(__DIR__) . '/include/common.php';

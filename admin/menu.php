@@ -1,10 +1,8 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 /*
  * ****************************************************************************
  * xsitemap - MODULE FOR XOOPS CMS
- * Copyright (c) Urbanspaceman (http://www.takeaweb.it)
+ * Copyright (c) Urbanspaceman (https://www.takeaweb.it)
  *
  * You may not change or alter any portion of this comment or credits
  * of supporting developers from this source code or any supporting source code
@@ -17,20 +15,17 @@ declare(strict_types=1);
 /**
  * Module: xsitemap
  *
- * @package         module\Xsitemap\admin
  * @author          XOOPS Module Development Team
- * @author          Urbanspaceman (http://www.takeaweb.it)
- * @copyright       Urbanspaceman (http://www.takeaweb.it)
+ * @author          Urbanspaceman (https://www.takeaweb.it)
+ * @copyright       Urbanspaceman (https://www.takeaweb.it)
  * @copyright       XOOPS Project (https://xoops.org)
- * @license         http://www.fsf.org/copyleft/gpl.html GNU public license
+ * @license         https://www.fsf.org/copyleft/gpl.html GNU public license
  * @link            https://xoops.org XOOPS
  * @since           1.00
  */
 
 use Xmf\Module\Admin;
-use XoopsModules\Xsitemap\{
-    Helper
-};
+use XoopsModules\Xsitemap\Helper;
 
 $moduleDirName      = \basename(\dirname(__DIR__));
 $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
@@ -38,8 +33,8 @@ $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 $helper = Helper::getInstance();
 $helper->loadLanguage('common');
 $helper->loadLanguage('feedback');
-$pathIcon32 = Admin::menuIconPath('');
-$pathModIcon32 = XOOPS_URL .   '/modules/' . $moduleDirName . '/assets/images/icons/32/';
+$pathIcon32    = Admin::menuIconPath('');
+$pathModIcon32 = XOOPS_URL . '/modules/' . $moduleDirName . '/assets/images/icons/32/';
 if (is_object($helper->getModule()) && false !== $helper->getModule()->getInfo('modicons32')) {
     $pathModIcon32 = $helper->url($helper->getModule()->getInfo('modicons32'));
 }

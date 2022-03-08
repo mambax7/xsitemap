@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace XoopsModules\Xsitemap;
 
@@ -26,12 +24,13 @@ class Helper extends \Xmf\Module\Helper
      *
      * @return \XoopsModules\Xsitemap\Helper
      */
-    public static function getInstance(bool $debug = false): Helper
+    public static function getInstance(bool $debug = false): self
     {
         static $instance;
         if (null === $instance) {
             $instance = new static($debug);
         }
+
         return $instance;
     }
 
@@ -62,6 +61,7 @@ class Helper extends \Xmf\Module\Helper
         $helper = self::getInstance();
         $ret    = new $class($db, $helper);
         $this->addLog("Getting handler '{$name}'");
+
         return $ret;
     }
 }

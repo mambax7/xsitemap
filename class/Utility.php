@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace XoopsModules\Xsitemap;
 
@@ -20,21 +18,15 @@ namespace XoopsModules\Xsitemap;
 /**
  * Module:  xSitemap
  *
- * @package      \module\Xsitemap\class
- * @license      http://www.fsf.org/copyleft/gpl.html GNU public license
+ * @license      https://www.fsf.org/copyleft/gpl.html GNU public license
  * @copyright    https://xoops.org 2001-2017 &copy; XOOPS Project
  * @author       ZySpec <zyspec@yahoo.com>
  * @author       Mamba <mambax7@gmail.com>
  * @since        File available since version 1.54
  */
 
-use XoopsModules\Xsitemap\{
-    Common
-};
 /** @var Helper $helper */
 /** @var PluginHandler $pluginHandler */
-
-
 $helper        = Helper::getInstance();
 $moduleDirName = \basename(\dirname(__DIR__));
 \xoops_loadLanguage('admin', $moduleDirName);
@@ -86,8 +78,8 @@ class Utility extends Common\SysUtility
         $groups           = ($GLOBALS['xoopsUser'] instanceof \XoopsUser) ? $GLOBALS['xoopsUser']->getGroups() : XOOPS_GROUP_ANONYMOUS;
         $readAllowed      = $grouppermHandler->getItemIds('module_read', $groups);
         $filteredMids     = \array_diff($readAllowed, $invisibleMidArray);
-        $pluginHandler = Helper::getInstance()->getHandler('Plugin');
-        $criteria      = new \CriteriaCompo(new \Criteria('hasmain', 1));
+        $pluginHandler    = Helper::getInstance()->getHandler('Plugin');
+        $criteria         = new \CriteriaCompo(new \Criteria('hasmain', 1));
         $criteria->add(new \Criteria('isactive', 1));
         if (\count($filteredMids) > 0) {
             $criteria->add(new \Criteria('mid', '(' . \implode(',', $filteredMids) . ')', 'IN'));
@@ -118,7 +110,7 @@ class Utility extends Common\SysUtility
                 }
             }
             foreach ($pluginObjArray as $pObj) {
-                if ((0 == $pObj->getVar('topic_pid')) && \in_array($pObj->getVar('plugin_mod_table'), (array)$modObj->getInfo('tables'))) {
+                if ((0 == $pObj->getVar('topic_pid')) && \in_array($pObj->getVar('plugin_mod_table'), (array)$modObj->getInfo('tables'), true)) {
                     $objVars = $pObj->getValues();
                     if (1 == $objVars['plugin_online']) {
                         $tmpMap                           = self::getSitemap($objVars['plugin_mod_table'], $objVars['plugin_cat_id'], $objVars['plugin_cat_pid'], $objVars['plugin_cat_name'], $objVars['plugin_call'], $objVars['plugin_weight'], $objVars['plugin_where']);
@@ -127,6 +119,7 @@ class Utility extends Common\SysUtility
                 }
             }
         }
+
         return $block;
     }
 
@@ -158,7 +151,7 @@ class Utility extends Common\SysUtility
         }
         //$sql = "SELECT `{$id_name}`, `{$title_name}` FROM " . $xoopsDb->prefix . "_{$table} WHERE `{$pid_name}`= 0";
         // v1.54 added in the event categories are flat (don't support hierarchy)
-        $sql = "SELECT `{$id_name}`, `{$title_name}` FROM " . $xoopsDb->prefix . "_{$table}";
+        $sql      = "SELECT `{$id_name}`, `{$title_name}` FROM " . $xoopsDb->prefix . "_{$table}";
         $sqlWhere = '';
         if ($pid_name !== $id_name) {
             $sqlWhere = "`{$pid_name}`= 0";
@@ -179,7 +172,7 @@ class Utility extends Common\SysUtility
         $i        = 0;
         $xsitemap = [];
         if ($result) {
-            while (list($catid, $name) = $xoopsDb->fetchRow($result)) {
+            while ([$catid, $name] = $xoopsDb->fetchRow($result)) {
                 $xsitemap['parent'][$i] = [
                     'id'    => $catid,
                     'title' => \htmlspecialchars($name, \ENT_QUOTES | \ENT_HTML5),
@@ -218,7 +211,7 @@ class Utility extends Common\SysUtility
         $xml->preserveWhiteSpace = false;
         $xml->formatOutput       = true;
         $xml_set                 = $xml->createElement('urlset');
-        $xml_set->setAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
+        $xml_set->setAttribute('xmlns', 'https://www.sitemaps.org/schemas/sitemap/0.9');
         if (!empty($xsitemap_show)) {
             foreach ($xsitemap_show['modules'] as $mod) {
                 if ($mod['directory']) {
@@ -250,6 +243,7 @@ class Utility extends Common\SysUtility
             }
         }
         $xml->appendChild($xml_set);
+
         return $xml->save($GLOBALS['xoops']->path('www/xsitemap.xml'));
     }
 }
