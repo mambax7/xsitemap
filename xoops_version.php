@@ -23,9 +23,9 @@
 require __DIR__ . '/preloads/autoloader.php';
 $moduleDirName = basename(__DIR__);
 $modversion    = [
-    'version'             => 1.57,
+    'version'             => '1.57.1',
     'module_status'       => 'Beta 1',
-    'release_date'        => '2021/08/06',
+    'release_date'        => '2022/02/20',
     'name'                => _MI_XSITEMAP_NAME,
     'description'         => _MI_XSITEMAP_DESC,
     'author'              => 'Urbanspaceman',
