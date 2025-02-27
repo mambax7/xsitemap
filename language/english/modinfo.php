@@ -18,7 +18,7 @@
  * @author     Urbanspaceman (https://www.takeaweb.it)
  * @copyright  Urbanspaceman (https://www.takeaweb.it)
  * @copyright  XOOPS Project (https://xoops.org)
- * @license    https://www.fsf.org/copyleft/gpl.html GNU public license
+ * @license    GNU GPL 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html)
  * @since      1.00
  */
 //Menu
@@ -56,7 +56,7 @@ define('_MI_XSITEMAP_DIRNAME', basename(dirname(__DIR__, 2)));
 define('_MI_XSITEMAP_HELP_HEADER', __DIR__ . '/help/helpheader.tpl');
 define('_MI_XSITEMAP_BACK_2_ADMIN', 'Back to Administration of ');
 define('_MI_XSITEMAP_OVERVIEW', 'Overview');
-//help multi-page
+//help multipage
 define('_MI_XSITEMAP_DISCLAIMER', 'Disclaimer');
 define('_MI_XSITEMAP_LICENSE', 'License');
 define('_MI_XSITEMAP_SUPPORT', 'Support');

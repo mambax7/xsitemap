@@ -17,15 +17,15 @@
  * @author     Urbanspaceman (https://www.takeaweb.it)
  * @copyright  Urbanspaceman (https://www.takeaweb.it)
  * @copyright  XOOPS Project (https://xoops.org)
- * @license    https://www.fsf.org/copyleft/gpl.html GNU public license
+ * @license    GNU GPL 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html)
  * @link       https://xoops.org XOOPS
  */
 require __DIR__ . '/preloads/autoloader.php';
 $moduleDirName = basename(__DIR__);
 $modversion    = [
     'version'             => '1.57.1',
-    'module_status'       => 'Beta 1',
-    'release_date'        => '2022/02/20',
+    'module_status'       => 'Beta 2',
+    'release_date'        => '2025/02/26',
     'name'                => _MI_XSITEMAP_NAME,
     'description'         => _MI_XSITEMAP_DESC,
     'author'              => 'Urbanspaceman',
@@ -43,7 +43,7 @@ $modversion    = [
     'modicons16'          => 'assets/images/icons/16',
     'modicons32'          => 'assets/images/icons/32',
     'min_php'             => '7.4',
-    'min_xoops'           => '2.5.10',
+    'min_xoops'           => '2.5.11',
     'min_admin'           => '1.2',
     'min_db'              => ['mysql' => '5.5'],
     // About

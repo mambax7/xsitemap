@@ -15,7 +15,7 @@ namespace XoopsModules\Xsitemap\Common;
  * Breadcrumb Class
  *
  * @copyright   XOOPS Project (https://xoops.org)
- * @license     https://www.fsf.org/copyleft/gpl.html GNU public license
+ * @license     GNU GPL 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html)
  * @author      lucio <lucio.rota@gmail.com>
  * @since       3.23
  * @version     $Id: breadcrumb.php 12865 2014-11-22 07:03:35Z beckmi $

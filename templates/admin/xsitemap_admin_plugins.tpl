@@ -32,15 +32,15 @@
 				<th class="center width5"><{$smarty.const._AM_XSITEMAP_FORMACTION}></th>
 			</tr>
 		</thead>
-		<{if $plugins_count}>
+		<{if isset($plugins_count)}>
 		<tbody>
-			<{foreach item=plugin from=$plugins_list}>
+			<{foreach item=plugin from=$plugins_list|default:null}>
 			<tr class="<{cycle values='even,odd'}> alignmiddle">
 				<td class="xo-actions txtcenter">
                     <img id="loading_sml<{$plugin.plugin_id}>" src="../assets/images/spinner.gif" style="display:none;" title="<{$smarty.const._AM_SYSTEM_LOADING}>"
                     alt="<{$smarty.const._AM_SYSTEM_LOADING}>"><img class="cursorpointer tooltip" id="sml<{$plugin.plugin_id}>"
                     onclick="system_setStatus( { op: 'update_online_plugin', plugin_id: <{$plugin.plugin_id}> }, 'sml<{$plugin.plugin_id}>', 'plugin.php' )"
-                    src="<{if $plugin.plugin_online == 1}><{xoAdminIcons success.png}><{else}><{xoAdminIcons cancel.png}><{/if}>"
+                    src="<{if $plugin.plugin_online == 1}><{xoAdminIcons 'success.png'}><{else}><{xoAdminIcons 'cancel.png'}><{/if}>"
                     alt="<{if $plugin.plugin_online}><{$smarty.const._AM_XSITEMAP_OFF}><{else}><{$smarty.const._AM_XSITEMAP_ON}><{/if}>"
                     title="<{if $plugin.plugin_online}><{$smarty.const._AM_XSITEMAP_OFF}><{else}><{$smarty.const._AM_XSITEMAP_ON}><{/if}>">
                 </td>
@@ -58,8 +58,8 @@
 
 
 				<td class="center  width5">
-					<a href="plugin.php?op=edit_plugin&amp;plugin_id=<{$plugin.plugin_id}>" title="<{$smarty.const._EDIT}>"><img src="<{xoModuleIcons16 edit.png}>" alt="<{$smarty.const._EDIT}> plugins"></a>
-					<a href="plugin.php?op=delete_plugin&amp;plugin_id=<{$plugin.plugin_id}>" title="<{$smarty.const._DELETE}>"><img src="<{xoModuleIcons16 delete.png}>" alt="<{$smarty.const._DELETE}> plugins"></a>
+					<a href="plugin.php?op=edit_plugin&amp;plugin_id=<{$plugin.plugin_id}>" title="<{$smarty.const._EDIT}>"><img src="<{xoModuleIcons16 'edit.png'}>" alt="<{$smarty.const._EDIT}> plugins"></a>
+					<a href="plugin.php?op=delete_plugin&amp;plugin_id=<{$plugin.plugin_id}>" title="<{$smarty.const._DELETE}>"><img src="<{xoModuleIcons16 'delete.png'}>" alt="<{$smarty.const._DELETE}> plugins"></a>
 				</td>
 			</tr>
 			<{/foreach}>

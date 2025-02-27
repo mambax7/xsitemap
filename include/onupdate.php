@@ -54,7 +54,7 @@ function xoops_module_pre_update_xsitemap(\XoopsModule $module): bool
  * @return bool true if successfully updated module, false if not
  * @internal param int $curr_version version number of module currently installed
  */
-function xoops_module_update_xsitemap(\XoopsModule $module, int $previousVersion = null): bool
+function xoops_module_update_xsitemap(\XoopsModule $module, ?int $previousVersion = null): bool
 {
     /*======================================================================
         //----------------------------------------------------------------
@@ -133,7 +133,7 @@ function xoops_module_update_xsitemap(\XoopsModule $module, int $previousVersion
             $helper->path('class/menu.php'),
         ];
         foreach ($oldFiles as $file) {
-            if (is_file($file)) {
+            if (\is_file($file)) {
                 if (!$delOk = unlink($file)) {
                     $module->setErrors(sprintf(_AM_XSITEMAP_ERROR_BAD_REMOVE, $file));
                 }

@@ -18,7 +18,7 @@ namespace XoopsModules\Xsitemap;
 /**
  * Module:  xSitemap
  *
- * @license      https://www.fsf.org/copyleft/gpl.html GNU public license
+ * @license      GNU GPL 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html)
  * @copyright    https://xoops.org 2001-2017 &copy; XOOPS Project
  * @author       ZySpec <zyspec@yahoo.com>
  * @author       Mamba <mambax7@gmail.com>
@@ -139,19 +139,19 @@ class Utility extends Common\SysUtility
     {
         require_once XOOPS_ROOT_PATH . '/class/tree.php';
         $helper = Helper::getInstance();
-        /** @var \XoopsMySQLDatabase $xoopsDb */
-        $xoopsDb   = \XoopsDatabaseFactory::getDatabaseConnection();
-        $sql       = "SELECT `{$id_name}`, `{$pid_name}`, `{$title_name}` FROM " . $xoopsDb->prefix . "_{$table}";
-        $result    = $xoopsDb->query($sql);
+        /** @var \XoopsMySQLDatabase $xoopsDB */
+        $xoopsDB   = \XoopsDatabaseFactory::getDatabaseConnection();
+        $sql       = "SELECT `{$id_name}`, `{$pid_name}`, `{$title_name}` FROM " . $xoopsDB->prefix . "_{$table}";
+        $result    = $xoopsDB->query($sql);
         $objsArray = [];
-        if ($result instanceof \mysqli_result) {
-            while (false !== ($row = $xoopsDb->fetchArray($result))) {
+        if ($xoopsDB->isResultSet($result)) {
+            while (false !== ($row = $xoopsDB->fetchArray($result))) {
                 $objsArray[] = new DummyObject($row, $id_name, $pid_name, $title_name);
             }
         }
-        //$sql = "SELECT `{$id_name}`, `{$title_name}` FROM " . $xoopsDb->prefix . "_{$table} WHERE `{$pid_name}`= 0";
+        //$sql = "SELECT `{$id_name}`, `{$title_name}` FROM " . $xoopsDB->prefix . "_{$table} WHERE `{$pid_name}`= 0";
         // v1.54 added in the event categories are flat (don't support hierarchy)
-        $sql      = "SELECT `{$id_name}`, `{$title_name}` FROM " . $xoopsDb->prefix . "_{$table}";
+        $sql      = "SELECT `{$id_name}`, `{$title_name}` FROM " . $xoopsDB->prefix . "_{$table}";
         $sqlWhere = '';
         if ($pid_name !== $id_name) {
             $sqlWhere = "`{$pid_name}`= 0";
@@ -168,11 +168,12 @@ class Utility extends Common\SysUtility
         if ('' != $order) {
             $sql .= " ORDER BY `{$order}`";
         }
-        $result   = $xoopsDb->query($sql);
+        //        $result   = Utility::queryAndCheck($this->db, $sql);
+        $result = $xoopsDB->query($sql);
         $i        = 0;
         $xsitemap = [];
-        if ($result) {
-            while ([$catid, $name] = $xoopsDb->fetchRow($result)) {
+        if ($xoopsDB->isResultSet($result)) {
+            while ([$catid, $name] = $xoopsDB->fetchRow($result)) {
                 $xsitemap['parent'][$i] = [
                     'id'    => $catid,
                     'title' => \htmlspecialchars($name, \ENT_QUOTES | \ENT_HTML5),

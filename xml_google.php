@@ -16,7 +16,7 @@
  * @author     Urbanspaceman (https://www.takeaweb.it)
  * @copyright  Urbanspaceman (https://www.takeaweb.it)
  * @copyright  XOOPS Project
- * @license    https://www.fsf.org/copyleft/gpl.html GNU public license
+ * @license    GNU GPL 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html)
  * @link       https://xoops.org XOOPS
  * @since      ::    1.00
  **/
@@ -28,10 +28,10 @@ $moduleDirName = basename(__DIR__);
 //template assign
 $GLOBALS['xoopsOption']['template_main'] = 'xsitemap_xml.tpl';
 require_once __DIR__ . '/header.php';
-require_once $GLOBALS['xoops']->path('header.php');
-require_once $GLOBALS['xoops']->path('class/tree.php');
+require_once XOOPS_ROOT_PATH . '/header.php';
+require_once XOOPS_ROOT_PATH . '/class/tree.php';
 
-$xmlfile       = $GLOBALS['xoops']->path('xsitemap.xml');
+$xmlfile       = XOOPS_ROOT_PATH . '/xsitemap.xml';
 $xsitemap_show = Utility::generateSitemap();
 if (!empty($xsitemap_show)) {
     $retVal = Utility::saveSitemap($xsitemap_show);
@@ -45,4 +45,4 @@ if (!empty($xsitemap_show)) {
     $status = _AM_XSITEMAP_XML_ERROR_UPDATE;
 }
 $xoopsTpl->assign('lastmod', $status);
-require_once $GLOBALS['xoops']->path('footer.php');
+require_once XOOPS_ROOT_PATH . '/footer.php';

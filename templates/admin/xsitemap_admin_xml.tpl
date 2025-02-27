@@ -1,5 +1,5 @@
 <!-- Header -->
-<{includeq file='db:xsitemap_admin_header.tpl' }>
+<{include file='db:xsitemap_admin_header.tpl' }>
 
 <{if $update|default:''}>
     <p style='margin-bottom: 2em;'><{$update}></p>
@@ -20,4 +20,4 @@
 <{/if}>
 
 <!-- Footer -->
-<{includeq file='db:xsitemap_admin_footer.tpl' }>
+<{include file='db:xsitemap_admin_footer.tpl' }>

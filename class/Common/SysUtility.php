@@ -17,7 +17,7 @@ namespace XoopsModules\Xsitemap\Common;
 
 /**
  *
- * @license      https://www.fsf.org/copyleft/gpl.html GNU public license
+ * @license      GNU GPL 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html)
  * @copyright    https://xoops.org 2000-2020 &copy; XOOPS Project
  * @author       ZySpec <zyspec@yahoo.com>
  * @author       Mamba <mambax7@gmail.com>
@@ -35,9 +35,11 @@ class SysUtility
     use VersionChecks;
 
     //checkVerXoops, checkVerPhp Traits
+
     use ServerStats;
 
     // getServerStats Trait
+
     use FilesManagement;
 
     // Files Management Trait
@@ -64,54 +66,54 @@ class SysUtility
             }
             // splits all html-tags to scanable lines
             \preg_match_all('/(<.+?' . '>)?([^<>]*)/s', $text, $lines, \PREG_SET_ORDER);
-            $total_length = mb_strlen($ending);
+            $total_length = \mb_strlen($ending);
             $open_tags    = [];
             $truncate     = '';
-            foreach ($lines as $line_matchings) {
+            foreach ($lines as $lineMatchings) {
                 // if there is any html-tag in this line, handle it and add it (uncounted) to the output
-                if (!empty($line_matchings[1])) {
+                if (!empty($lineMatchings[1])) {
                     // if it's an "empty element" with or without xhtml-conform closing slash
-                    if (\preg_match('/^<(\s*.+?\/\s*|\s*(img|br|input|hr|area|base|basefont|col|frame|isindex|link|meta|param)(\s.+?)?)>$/is', $line_matchings[1])) {
+                    if (\preg_match('/^<(\s*.+?\/\s*|\s*(img|br|input|hr|area|base|basefont|col|frame|isindex|link|meta|param)(\s.+?)?)>$/is', $lineMatchings[1])) {
                         // do nothing
                         // if tag is a closing tag
-                    } elseif (\preg_match('/^<\s*\/(\S+?)\s*>$/s', $line_matchings[1], $tag_matchings)) {
+                    } elseif (\preg_match('/^<\s*\/(\S+?)\s*>$/s', $lineMatchings[1], $tag_matchings)) {
                         // delete tag from $open_tags list
                         $pos = \array_search($tag_matchings[1], $open_tags, true);
                         if (false !== $pos) {
                             unset($open_tags[$pos]);
                         }
                         // if tag is an opening tag
-                    } elseif (\preg_match('/^<\s*([^\s>!]+).*?' . '>$/s', $line_matchings[1], $tag_matchings)) {
+                    } elseif (\preg_match('/^<\s*([^\s>!]+).*?' . '>$/s', $lineMatchings[1], $tag_matchings)) {
                         // add tag to the beginning of $open_tags list
                         \array_unshift($open_tags, \mb_strtolower($tag_matchings[1]));
                     }
                     // add html-tag to $truncate'd text
-                    $truncate .= $line_matchings[1];
+                    $truncate .= $lineMatchings[1];
                 }
                 // calculate the length of the plain text part of the line; handle entities as one character
-                $content_length = mb_strlen(\preg_replace('/&[0-9a-z]{2,8};|&#\d{1,7};|[0-9a-f]{1,6};/i', ' ', $line_matchings[2]));
+                $content_length = \mb_strlen(\preg_replace('/&[0-9a-z]{2,8};|&#\d{1,7};|[0-9a-f]{1,6};/i', ' ', $lineMatchings[2]));
                 if ($total_length + $content_length > $length) {
                     // the number of characters which are left
                     $left            = $length - $total_length;
                     $entities_length = 0;
                     // search for html entities
-                    if (\preg_match_all('/&[0-9a-z]{2,8};|&#\d{1,7};|[0-9a-f]{1,6};/i', $line_matchings[2], $entities, \PREG_OFFSET_CAPTURE)) {
+                    if (\preg_match_all('/&[0-9a-z]{2,8};|&#\d{1,7};|[0-9a-f]{1,6};/i', $lineMatchings[2], $entities, \PREG_OFFSET_CAPTURE)) {
                         // calculate the real length of all entities in the legal range
                         foreach ($entities[0] as $entity) {
                             if ($left >= $entity[1] + 1 - $entities_length) {
                                 $left--;
-                                $entities_length += mb_strlen($entity[0]);
+                                $entities_length += \mb_strlen($entity[0]);
                             } else {
                                 // no more characters left
                                 break;
                             }
                         }
                     }
-                    $truncate .= mb_substr($line_matchings[2], 0, $left + $entities_length);
+                    $truncate .= mb_substr($lineMatchings[2], 0, $left + $entities_length);
                     // maximum lenght is reached, so get off the loop
                     break;
                 }
-                $truncate     .= $line_matchings[2];
+                $truncate     .= $lineMatchings[2];
                 $total_length += $content_length;
                 // if the maximum length is reached, get off the loop
                 if ($total_length >= $length) {
@@ -150,7 +152,7 @@ class SysUtility
      * @param array|null              $options
      * @return \XoopsFormDhtmlTextArea|\XoopsFormEditor
      */
-    public static function getEditor(\Xmf\Module\Helper $helper = null, array $options = null)
+    public static function getEditor(?\Xmf\Module\Helper $helper = null, ?array $options = null)
     {
         if (null === $options) {
             $options           = [];
@@ -167,12 +169,12 @@ class SysUtility
         $isAdmin = $helper->isUserAdmin();
         if (\class_exists('XoopsFormEditor')) {
             if ($isAdmin) {
-                $descEditor = new \XoopsFormEditor(\ucfirst($options['name']), $helper->getConfig('editorAdmin'), $options, $nohtml = false, $onfailure = 'textarea');
+                $descEditor = new \XoopsFormEditor(\ucfirst((string) $options['name']), $helper->getConfig('editorAdmin'), $options, $nohtml = false, $onfailure = 'textarea');
             } else {
-                $descEditor = new \XoopsFormEditor(\ucfirst($options['name']), $helper->getConfig('editorUser'), $options, $nohtml = false, $onfailure = 'textarea');
+                $descEditor = new \XoopsFormEditor(\ucfirst((string) $options['name']), $helper->getConfig('editorUser'), $options, $nohtml = false, $onfailure = 'textarea');
             }
         } else {
-            $descEditor = new \XoopsFormDhtmlTextArea(\ucfirst($options['name']), $options['name'], $options['value'], '100%', '100%');
+            $descEditor = new \XoopsFormDhtmlTextArea(\ucfirst((string) $options['name']), $options['name'], $options['value']);
         }
         //        $form->addElement($descEditor);
         return $descEditor;
@@ -187,19 +189,20 @@ class SysUtility
     public static function fieldExists(string $fieldname, string $table): bool
     {
         global $xoopsDB;
-        $result = $xoopsDB->queryF("SHOW COLUMNS FROM   $table LIKE '$fieldname'");
+        $sql    = "SHOW COLUMNS FROM   $table LIKE '$fieldname'";
+        $result = self::queryFAndCheck($xoopsDB, $sql);
 
         return ($xoopsDB->getRowsNum($result) > 0);
     }
 
     /**
      * @param array|string $tableName
-     * @param int          $idField
+     * @param string       $idField
      * @param int          $id
      *
-     * @return false|void
+     * @return int|bool
      */
-    public static function cloneRecord($tableName, int $idField, int $id)
+    public static function cloneRecord($tableName, string $idField, int $id)
     {
         $new_id = false;
         $table  = $GLOBALS['xoopsDB']->prefix($tableName);
@@ -226,7 +229,7 @@ class SysUtility
     public static function prepareFolder(string $folder): void
     {
         try {
-            if (!@\mkdir($folder) && !\is_dir($folder)) {
+            if (!\is_dir($folder) && !\mkdir($folder) && !\is_dir($folder)) {
                 throw new \RuntimeException(\sprintf('Unable to create the %s directory', $folder));
             }
             file_put_contents($folder . '/index.html', '<script>history.go(-1);</script>');
@@ -235,15 +238,22 @@ class SysUtility
         }
     }
 
-
     /**
      * @param string $tablename
      *
      * @return bool
      */
+
     public static function tableExists(string $tablename): bool
     {
-        $result = $GLOBALS['xoopsDB']->queryF("SHOW TABLES LIKE '$tablename'");
+        $ret   = false;
+        $trace = \debug_backtrace(\DEBUG_BACKTRACE_IGNORE_ARGS, 1);
+        \trigger_error(__FUNCTION__ . " is deprecated, called from {$trace[0]['file']}line {$trace[0]['line']}", E_USER_DEPRECATED);
+        $GLOBALS['xoopsLogger']->addDeprecated(
+            \basename(\dirname(__DIR__, 2)) . ' Module: ' . __FUNCTION__ . ' function is deprecated, please use Xmf\Database\Tables method(s) instead.' . " Called from {$trace[0]['file']}line {$trace[0]['line']}"
+        );
+        $sql    = "SHOW TABLES LIKE '$tablename'";
+        $result = self::queryFAndCheck($GLOBALS['xoopsDB'], $sql);
 
         return $GLOBALS['xoopsDB']->getRowsNum($result) > 0;
     }
@@ -257,6 +267,52 @@ class SysUtility
     {
         global $xoopsDB;
         $result = $xoopsDB->queryF('ALTER TABLE ' . $table . " ADD $field;");
+
+        return $result;
+    }
+
+    /**
+     * Query and check if the result is a valid result set
+     *
+     * @param \XoopsMySQLDatabase $xoopsDB XOOPS Database
+     * @param string              $sql     a valid MySQL query
+     * @param int                 $limit   number of records to return
+     * @param int                 $start   offset of first record to return
+     *
+     * @return \mysqli_result query result
+     */
+    public static function queryAndCheck(\XoopsMySQLDatabase $xoopsDB, string $sql, $limit = 0, $start = 0): \mysqli_result
+    {
+        $result = $xoopsDB->query($sql, $limit, $start);
+
+        if (!$xoopsDB->isResultSet($result)) {
+            throw new \RuntimeException(
+                \sprintf(\_DB_QUERY_ERROR, $sql) . $xoopsDB->error(), \E_USER_ERROR
+            );
+        }
+
+        return $result;
+    }
+
+    /**
+     * QueryF and check if the result is a valid result set
+     *
+     * @param \XoopsMySQLDatabase $xoopsDB XOOPS Database
+     * @param string              $sql     a valid MySQL query
+     * @param int                 $limit   number of records to return
+     * @param int                 $start   offset of first record to return
+     *
+     * @return \mysqli_result query result
+     */
+    public static function queryFAndCheck(\XoopsMySQLDatabase $xoopsDB, string $sql, $limit = 0, $start = 0): \mysqli_result
+    {
+        $result = $xoopsDB->queryF($sql, $limit, $start);
+
+        if (!$xoopsDB->isResultSet($result)) {
+            throw new \RuntimeException(
+                \sprintf(\_DB_QUERY_ERROR, $sql) . $xoopsDB->error(), \E_USER_ERROR
+            );
+        }
 
         return $result;
     }

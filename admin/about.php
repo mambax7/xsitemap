@@ -26,6 +26,6 @@ xoops_cp_header();
 $templateMain = 'xsitemap_admin_about.tpl';
 
 $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('about.php'));
-$adminObject::setPaypal('xoopsfoundation@gmail.com');
+Admin::setPaypal('xoopsfoundation@gmail.com');
 $GLOBALS['xoopsTpl']->assign('about', $adminObject->renderAbout(false));
 require_once __DIR__ . '/admin_footer.php';

@@ -4,7 +4,7 @@
  *
  * @author          XOOPS Module Development Team
  * @copyright       {@link https://xoops.org 2001-2016 XOOPS Project}
- * @license         {@link https://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @license         {@link https://www.gnu.org/licenses/gpl-2.0.html GNU GPL 2.0 or later}
  * @link            https://xoops.org XOOPS
  */
 
@@ -73,7 +73,7 @@ function xoops_module_uninstall_xsitemap(\XoopsModule $module): bool
     // Remove xsitemap.xml from XOOPS root folder if it exists
     //------------------------------------------------------------------
     $xmlfile = $GLOBALS['xoops']->path('xsitemap.xml');
-    if (is_file($xmlfile)) {
+    if (\is_file($xmlfile)) {
         if (!$delOk = unlink($xmlfile)) {
             $module->setErrors(sprintf(_AM_XSITEMAP_ERROR_BAD_REMOVE, $xmlfile));
         }

@@ -15,7 +15,7 @@
  * @author     Taiwen Jiang <phppp@users.sourceforge.net>
  * @author     ZySpec <zyspec@yahoo.com>
  * @copyright  https://xoops.org 2001-2017 XOOPS Project
- * @license    https://www.fsf.org/copyleft/gpl.html GNU public license
+ * @license    GNU GPL 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html)
  * @link       https://xoops.org XOOPS
  * @since      1.00
  */
@@ -103,7 +103,7 @@ function xoops_module_pre_update_xsitemap(\XoopsModule $module): bool
  * @return bool true if successfully updated module, false if not
  * @internal param int $curr_version version number of module currently installed
  */
-function xoops_module_update_xsitemap(\XoopsModule $module, int $previousVersion = null): bool
+function xoops_module_update_xsitemap(\XoopsModule $module, $previousVersion = null): bool
 {
     /*======================================================================
         //----------------------------------------------------------------
@@ -184,7 +184,7 @@ function xoops_module_update_xsitemap(\XoopsModule $module, int $previousVersion
             $helper->path('class/menu.php'),
         ];
         foreach ($oldFiles as $file) {
-            if (is_file($file)) {
+            if (\is_file($file)) {
                 if (!$delOk = unlink($file)) {
                     $module->setErrors(sprintf(_AM_XSITEMAP_ERROR_BAD_REMOVE, $file));
                 }
@@ -246,7 +246,7 @@ function xoops_module_uninstall_xsitemap(\XoopsModule $module): bool
     // Remove xsitemap.xml from XOOPS root folder if it exists
     //------------------------------------------------------------------
     $xmlfile = $GLOBALS['xoops']->path('xsitemap.xml');
-    if (is_file($xmlfile)) {
+    if (\is_file($xmlfile)) {
         if (!$delOk = unlink($xmlfile)) {
             $module->setErrors(sprintf(_AM_XSITEMAP_ERROR_BAD_REMOVE, $xmlfile));
         }

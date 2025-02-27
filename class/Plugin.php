@@ -21,7 +21,7 @@ namespace XoopsModules\Xsitemap;
  * @author     Urbanspaceman (https://www.takeaweb.it)
  * @copyright  Urbanspaceman (https://www.takeaweb.it)
  * @copyright  XOOPS Project (https://xoops.org)
- * @license    https://www.fsf.org/copyleft/gpl.html GNU public license
+ * @license    GNU GPL 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html)
  * @link       https://xoops.org XOOPS
  * @since      1.00
  */
@@ -31,6 +31,22 @@ namespace XoopsModules\Xsitemap;
  */
 class Plugin extends \XoopsObject
 {
+    private $plugin_id;
+    private $plugin_name;
+    private $plugin_mod_version;
+    private $plugin_mod_table;
+    private $plugin_cat_id;
+    private $plugin_cat_pid;
+    private $plugin_cat_name;
+    private $plugin_weight;
+    private $plugin_where;
+    private $plugin_call;
+    private $plugin_submitter;
+    private $plugin_date_created;
+    private $plugin_online;
+    // to allow html
+    private $dohtml;
+
     //Constructor
     /**
      * Plugin constructor.
@@ -105,7 +121,7 @@ class Plugin extends \XoopsObject
         if (!$this->isNew()) {
             $form->addElement(new \XoopsFormHidden('plugin_id', $this->getVar('plugin_id')));
         }
-        $form->addElement(new \XoopsFormButtonTray('submit', _SUBMIT));
+        $form->addElement(new \XoopsFormButtonTray('submit', \_SUBMIT));
 
         return $form;
     }
@@ -117,7 +133,7 @@ class Plugin extends \XoopsObject
      * @param int|null    $maxDepth
      * @return array
      */
-    public function getValuesPlugins(array $keys = null, string $format = null, int $maxDepth = null): array
+    public function getValuesPlugins(?array $keys = null, ?string $format = null, ?int $maxDepth = null): array
     {
         $ret                 = $this->getValues($keys, $format, $maxDepth);
         $ret['date_created'] = \formatTimestamp($this->getVar('plugin_date_created'), 'm');

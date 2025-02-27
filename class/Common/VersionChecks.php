@@ -14,7 +14,7 @@ namespace XoopsModules\Xsitemap\Common;
 
 /**
  * @copyright   XOOPS Project (https://xoops.org)
- * @license     https://www.fsf.org/copyleft/gpl.html GNU public license
+ * @license     GNU GPL 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html)
  * @author      mamba <mambax7@gmail.com>
  */
 trait VersionChecks
@@ -27,7 +27,7 @@ trait VersionChecks
      * @param string|null       $requiredVer
      * @return bool true if meets requirements, false if not
      */
-    public static function checkVerXoops(\XoopsModule $module = null, string $requiredVer = null): bool
+    public static function checkVerXoops(?\XoopsModule $module = null, ?string $requiredVer = null): bool
     {
         $moduleDirName = \basename(\dirname(__DIR__));
         if (null === $module) {
@@ -41,7 +41,7 @@ trait VersionChecks
             $requiredVer = '' . $module->getInfo('min_xoops'); //making sure it's a string
         }
         $success = true;
-        if (\version_compare($currentVer, $requiredVer, '<')) {
+        if ($module->versionCompare($currentVer, $requiredVer, '<')) {
             $success = false;
             $module->setErrors(\sprintf(\_AM_XSITEMAP_ERROR_BAD_XOOPS, $requiredVer, $currentVer));
         }
@@ -56,7 +56,7 @@ trait VersionChecks
      *
      * @return bool true if meets requirements, false if not
      */
-    public static function checkVerPhp(\XoopsModule $module = null): bool
+    public static function checkVerPhp(?\XoopsModule $module = null): bool
     {
         $moduleDirName      = \basename(\dirname(__DIR__, 2));
         $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
@@ -70,8 +70,8 @@ trait VersionChecks
         $verNum  = \PHP_VERSION;
         $reqVer  = &$module->getInfo('min_php');
         if (false !== $reqVer && '' !== $reqVer) {
-            if (\version_compare($verNum, $reqVer, '<')) {
-                $module->setErrors(\sprintf(\constant('CO_' . $moduleDirNameUpper . '_ERROR_BAD_PHP'), $reqVer, $verNum));
+            if ($module->versionCompare($verNum, $reqVer, '<')) {
+                $module->setErrors(\sprintf(\constant('CO_' . $moduleDirNameUpper . '_' . 'ERROR_BAD_PHP'), $reqVer, $verNum));
                 $success = false;
             }
         }
@@ -128,7 +128,7 @@ trait VersionChecks
                     $moduleVersion = \str_replace(' ', '', \mb_strtolower($moduleVersion));
                     //                    $moduleVersion = '1.0'; //for testing only
                     //                    $moduleDirName = 'publisher'; //for testing only
-                    if (!$prerelease && \version_compare($moduleVersion, $latestVersion, '<')) {
+                    if (!$prerelease && $module->versionCompare($moduleVersion, $latestVersion, '<')) {
                         $ret   = [];
                         $ret[] = $update;
                         $ret[] = $latestVersionLink;

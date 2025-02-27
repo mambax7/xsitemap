@@ -3,13 +3,13 @@
         <a href="<{$xoops_url}>/modules/<{$module.directory}>/"><{$module.name}></a>
         <{if $module.parent|default:''}>
             <ul>
-                <{foreach item=parent from=$module.parent}>
+                <{foreach item=parent from=$module.parent|default:null}>
                     <li>
                         <a href="<{$xoops_url}>/modules/<{$module.directory}>/<{$parent.url}>"><{$parent.title}></a>
-                        <{if $show_subcategories}>
+                        <{if isset($show_subcategories)}>
                             <{if $parent.child|default:null}>
                                 <ul>
-                                    <{foreach item=child from=$parent.child}>
+                                    <{foreach item=child from=$parent.child|default:null}>
                                         <li><a href="<{$xoops_url}>/modules/<{$module.directory}>/<{$child.url}>"><{$child.title}></a></li>
                                     <{/foreach}>
                                 </ul>
@@ -19,10 +19,10 @@
                 <{/foreach}>
             </ul>
         <{/if}>
-        <{if $show_sublink}>
+        <{if isset($show_sublink)}>
             <{if $module.sublinks}>
                 <ul class="sublink">
-                    <{foreach item=sublink from=$module.sublinks}>
+                    <{foreach item=sublink from=$module.sublinks|default:null}>
                         <li><a href="<{$sublink.url}>"><{$sublink.name}></a></li>
                     <{/foreach}>
                 </ul>

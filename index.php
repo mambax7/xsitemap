@@ -16,7 +16,7 @@
  * @author     Urbanspaceman (https://www.takeaweb.it)
  * @copyright  Urbanspaceman (https://www.takeaweb.it)
  * @copyright  XOOPS Project
- * @license    https://www.fsf.org/copyleft/gpl.html GNU public license
+ * @license    GNU GPL 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html)
  * @link       https://xoops.org XOOPS
  * @since      1.00
  **/
@@ -30,12 +30,12 @@ $utility       = new Utility();
 
 //template assign
 $GLOBALS['xoopsOption']['template_main'] = 'xsitemap_index.tpl';
-require_once $GLOBALS['xoops']->path('header.php');
+require_once XOOPS_ROOT_PATH . '/header.php';
 require_once $GLOBALS['xoops']->path('class/tree.php');
 
 $xsitemap_configs = $GLOBALS['xoopsModuleConfig'];
 $xsitemap_show    = $utility::generateSitemap();
-$GLOBALS['xoTheme']->addStylesheet($GLOBALS['xoops']->url('browse.php?modules/' . $moduleDirName . '/assets/css/style.css'));
+$GLOBALS['xoTheme']->addStylesheet('modules/' . $moduleDirName . '/assets/css/style.css');
 $GLOBALS['xoopsTpl']->assign(
     [
         'xsitemap'           => $xsitemap_show,
@@ -44,4 +44,4 @@ $GLOBALS['xoopsTpl']->assign(
         'show_subcategories' => $xsitemap_configs['show_subcategories'],
     ]
 );
-require_once $GLOBALS['xoops']->path('footer.php');
+require_once XOOPS_ROOT_PATH . '/footer.php';
